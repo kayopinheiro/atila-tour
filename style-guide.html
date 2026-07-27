@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Style Guide — Átila Tour</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/style-guide.css" />
+</head>
+<body>
+
+  <header class="sg-header">
+    <img src="assets/logo-fundo-escuro.png" alt="Átila Tour" />
+    <h1>Style Guide</h1>
+    <p>Sistema de design da Átila Tour — cores, tipografia, componentes e padrões de interação.</p>
+  </header>
+
+  <!-- ===================== NAV ===================== -->
+  <section class="section" id="nav">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__eyebrow">Componentes</span>
+        <h2 class="section__title">Nav</h2>
+        <p class="section__desc">Menu: Home · Pacotes · Destinos · Promoções · Dicas de Viagem · Sobre · Contato. Redimensione a janela (ou encolha o preview) para ver o menu mobile.</p>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__title">Sobre fundo claro</h3>
+        <div class="nav-demo">
+          <nav class="nav" aria-label="Navegação principal (demo, fundo claro)">
+            <a class="nav__logo" href="#"><img src="assets/logo-fundo-claro.png" alt="Átila Tour" /></a>
+            <ul class="nav__links">
+              <li><a class="nav__link is-active" href="#">Home</a></li>
+              <li><a class="nav__link" href="#">Pacotes</a></li>
+              <li><a class="nav__link" href="#">Destinos</a></li>
+              <li><a class="nav__link" href="#">Promoções</a></li>
+              <li><a class="nav__link" href="#">Dicas de Viagem</a></li>
+              <li><a class="nav__link" href="#">Sobre</a></li>
+              <li><a class="nav__link" href="#">Contato</a></li>
+            </ul>
+            <div class="nav__actions">
+              <button class="btn btn--primary btn--sm">Falar pelo WhatsApp</button>
+              <button class="nav__toggle" aria-expanded="false" aria-controls="nav-mobile-light" aria-label="Abrir menu">
+                <span class="nav__toggle-bar"></span>
+                <span class="nav__toggle-bar"></span>
+                <span class="nav__toggle-bar"></span>
+              </button>
+            </div>
+          </nav>
+          <div class="nav__mobile-panel" id="nav-mobile-light">
+            <ul class="nav__mobile-links">
+              <li><a class="nav__link is-active" href="#">Home</a></li>
+              <li><a class="nav__link" href="#">Pacotes</a></li>
+              <li><a class="nav__link" href="#">Destinos</a></li>
+              <li><a class="nav__link" href="#">Promoções</a></li>
+              <li><a class="nav__link" href="#">Dicas de Viagem</a></li>
+              <li><a class="nav__link" href="#">Sobre</a></li>
+              <li><a class="nav__link" href="#">Contato</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__title">Sobre fundo escuro (header transparente sobre hero)</h3>
+        <div class="nav-demo">
+          <nav class="nav nav--dark" aria-label="Navegação principal (demo, fundo escuro)">
+            <a class="nav__logo" href="#"><img src="assets/logo-fundo-escuro.png" alt="Átila Tour" /></a>
+            <ul class="nav__links">
+              <li><a class="nav__link is-active" href="#">Home</a></li>
+              <li><a class="nav__link" href="#">Pacotes</a></li>
+              <li><a class="nav__link" href="#">Destinos</a></li>
+              <li><a class="nav__link" href="#">Promoções</a></li>
+              <li><a class="nav__link" href="#">Dicas de Viagem</a></li>
+              <li><a class="nav__link" href="#">Sobre</a></li>
+              <li><a class="nav__link" href="#">Contato</a></li>
+            </ul>
+            <div class="nav__actions">
+              <button class="btn btn--accent btn--sm">Falar pelo WhatsApp</button>
+              <button class="nav__toggle" aria-expanded="false" aria-controls="nav-mobile-dark" aria-label="Abrir menu">
+                <span class="nav__toggle-bar"></span>
+                <span class="nav__toggle-bar"></span>
+                <span class="nav__toggle-bar"></span>
+              </button>
+            </div>
+          </nav>
+          <div class="nav__mobile-panel nav__mobile-panel--dark" id="nav-mobile-dark">
+            <ul class="nav__mobile-links">
+              <li><a class="nav__link is-active" href="#">Home</a></li>
+              <li><a class="nav__link" href="#">Pacotes</a></li>
+              <li><a class="nav__link" href="#">Destinos</a></li>
+              <li><a class="nav__link" href="#">Promoções</a></li>
+              <li><a class="nav__link" href="#">Dicas de Viagem</a></li>
+              <li><a class="nav__link" href="#">Sobre</a></li>
+              <li><a class="nav__link" href="#">Contato</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CORES ===================== -->
+  <section class="section" id="cores">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__eyebrow">Fundamentos</span>
+        <h2 class="section__title">Cores</h2>
+        <p class="section__desc">Extraídas diretamente do logo oficial. Nenhuma cor fora desta lista deve ser usada no projeto.</p>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__title">Marca</h3>
+        <div class="grid grid-4">
+          <div class="swatch">
+            <div class="swatch__color" style="background: var(--color-primary);"></div>
+            <div class="swatch__meta"><div class="swatch__name">Primary</div><div class="swatch__hex">#01348E</div></div>
+          </div>
+          <div class="swatch">
+            <div class="swatch__color" style="background: var(--color-primary-dark);"></div>
+            <div class="swatch__meta"><div class="swatch__name">Primary Dark</div><div class="swatch__hex">#002D87</div></div>
+          </div>
+          <div class="swatch">
+            <div class="swatch__color" style="background: var(--color-primary-light);"></div>
+            <div class="swatch__meta"><div class="swatch__name">Primary Light</div><div class="swatch__hex">#0149BC</div></div>
+          </div>
+          <div class="swatch">
+            <div class="swatch__color" style="background: var(--gradient-primary);"></div>
+            <div class="swatch__meta"><div class="swatch__name">Gradient Primary</div><div class="swatch__hex">135deg</div></div>
+          </div>
+          <div class="swatch">
+            <div class="swatch__color" style="background: var(--color-navy);"></div>
+            <div class="swatch__meta"><div class="swatch__name">Navy</div><div class="swatch__hex">#010D24</div></div>
+          </div>
+          <div class="swatch">
+            <div class="swatch__color" style="background: var(--color-accent);"></div>
+            <div class="swatch__meta"><div class="swatch__name">Accent</div><div class="swatch__hex">#FD9E0A</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__title">Neutros</h3>
+        <div class="grid grid-4">
+          <div class="swatch">
+            <div class="swatch__color" style="background: var(--color-background); border-bottom:1px solid var(--color-border);"></div>
+            <div class="swatch__meta"><div class="swatch__name">Background</div><div class="swatch__hex">#FFFFFF</div></div>
+          </div>
+          <div class="swatch">
+            <div class="swatch__color" style="background: var(--color-surface);"></div>
+            <div class="swatch__meta"><div class="swatch__name">Surface</div><div class="swatch__hex">#F5F6F8</div></div>
+          </div>
+          <div class="swatch">
+            <div class="swatch__color" style="background: var(--color-text);"></div>
+            <div class="swatch__meta"><div class="swatch__name">Text</div><div class="swatch__hex">#0A0F1A</div></div>
+          </div>
+          <div class="swatch">
+            <div class="swatch__color" style="background: var(--color-text-muted);"></div>
+            <div class="swatch__meta"><div class="swatch__name">Text Muted</div><div class="swatch__hex">#5C6472</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== LOGO ===================== -->
+  <section class="section" id="logo">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__eyebrow">Fundamentos</span>
+        <h2 class="section__title">Logo</h2>
+        <p class="section__desc">Três variantes oficiais, uma para cada tipo de fundo.</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="swatch">
+          <div class="swatch__color" style="background: var(--color-background); display:flex; align-items:center; justify-content:center; height:160px;">
+            <img src="assets/logo-fundo-claro.png" alt="Logo fundo claro" style="width:140px;" />
+          </div>
+          <div class="swatch__meta"><div class="swatch__name">logo-fundo-claro.png</div><div class="swatch__hex">sobre background / surface</div></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__color" style="background: var(--color-primary); display:flex; align-items:center; justify-content:center; height:160px;">
+            <img src="assets/logo-fundo-azul.png" alt="Logo fundo azul" style="width:140px;" />
+          </div>
+          <div class="swatch__meta"><div class="swatch__name">logo-fundo-azul.png</div><div class="swatch__hex">avatar / selo / redes sociais</div></div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__color" style="background: var(--color-navy); display:flex; align-items:center; justify-content:center; height:160px;">
+            <img src="assets/logo-fundo-escuro.png" alt="Logo fundo escuro" style="width:140px;" />
+          </div>
+          <div class="swatch__meta"><div class="swatch__name">logo-fundo-escuro.png</div><div class="swatch__hex">header sobre hero / footer</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TIPOGRAFIA ===================== -->
+  <section class="section" id="tipografia">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__eyebrow">Fundamentos</span>
+        <h2 class="section__title">Tipografia</h2>
+        <p class="section__desc">Família única: Manrope. Tracking negativo em headings grandes, line-height generoso no corpo de texto.</p>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__title">Display</h3>
+        <div class="type-row">
+          <span class="type-row__label">Display / 64px</span>
+          <span class="type-row__sample ts-display">Explore o mundo com a Átila Tour</span>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__title">Títulos — Body, H1 ao H6</h3>
+        <div class="type-row">
+          <span class="type-row__label">Body / 16px</span>
+          <span class="type-row__sample ts-body-heading">Título em peso regular (usado como body dentro da hierarquia de títulos)</span>
+        </div>
+        <div class="type-row">
+          <span class="type-row__label">H1 / 48px</span>
+          <span class="type-row__sample ts-h1">Pacotes selecionados pra sua próxima viagem</span>
+        </div>
+        <div class="type-row">
+          <span class="type-row__label">H2 / 32px</span>
+          <span class="type-row__sample ts-h2">Destinos populares</span>
+        </div>
+        <div class="type-row">
+          <span class="type-row__label">H3 / 22px</span>
+          <span class="type-row__sample ts-h3">Maldivas — 7 dias</span>
+        </div>
+        <div class="type-row">
+          <span class="type-row__label">H4 / 20px</span>
+          <span class="type-row__sample ts-h4">Roteiro do dia 1</span>
+        </div>
+        <div class="type-row">
+          <span class="type-row__label">H5 / 18px</span>
+          <span class="type-row__sample ts-h5">O que está incluso</span>
+        </div>
+        <div class="type-row">
+          <span class="type-row__label">H6 / 16px</span>
+          <span class="type-row__sample ts-h6">Política de cancelamento</span>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__title">Textos — Large, Medium, Regular, Small e Tiny</h3>
+        <div class="type-row">
+          <span class="type-row__label">Large / 18px</span>
+          <span class="type-row__sample ts-body-lg">Viagens que conectam destinos e histórias, com atendimento personalizado do início ao fim.</span>
+        </div>
+        <div class="type-row">
+          <span class="type-row__label">Medium / 17px</span>
+          <span class="type-row__sample ts-medium">Roteiros completos com passagem, hospedagem e passeios inclusos.</span>
+        </div>
+        <div class="type-row">
+          <span class="type-row__label">Regular / 16px</span>
+          <span class="type-row__sample ts-body">Explore roteiros com passagem, hospedagem e passeios inclusos, pensados para cada tipo de viajante.</span>
+        </div>
+        <div class="type-row">
+          <span class="type-row__label">Small / 14px</span>
+          <span class="type-row__sample ts-small">Restam apenas 8 vagas para esta data.</span>
+        </div>
+        <div class="type-row">
+          <span class="type-row__label">Tiny / 12px</span>
+          <span class="type-row__sample ts-tiny">Preço por pessoa, em quarto duplo. Consulte condições.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== BOTÕES ===================== -->
+  <section class="section" id="botoes">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__eyebrow">Componentes</span>
+        <h2 class="section__title">Botões</h2>
+        <p class="section__desc">Todo elemento clicável tem hover, focus-visible e active — navegue com Tab para conferir o foco.</p>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__title">Variantes</h3>
+        <div class="btn-row">
+          <button class="btn btn--primary">Buscar Pacotes</button>
+          <button class="btn btn--accent">Falar pelo WhatsApp</button>
+          <button class="btn btn--secondary">Ver detalhes</button>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__title">Tamanhos</h3>
+        <div class="btn-row">
+          <button class="btn btn--primary btn--sm">Pequeno</button>
+          <button class="btn btn--primary">Padrão</button>
+          <button class="btn btn--primary btn--lg">Grande</button>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__title">Estados</h3>
+        <div class="btn-row">
+          <button class="btn btn--primary">Normal</button>
+          <button class="btn btn--primary" disabled>Desabilitado</button>
+        </div>
+      </div>
+
+      <div class="subsection" style="background: var(--color-navy); padding: var(--space-6); border-radius: var(--radius-lg);">
+        <h3 class="subsection__title" style="color: var(--color-white);">Sobre fundo escuro</h3>
+        <div class="btn-row">
+          <button class="btn btn--accent">Reservar Agora</button>
+          <button class="btn btn--ghost-light">Saiba Mais</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FORMULÁRIOS ===================== -->
+  <section class="section" id="formularios">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__eyebrow">Componentes</span>
+        <h2 class="section__title">Formulários</h2>
+        <p class="section__desc">Inputs e barra de busca do hero — obrigatória mesmo quando referências visuais não a incluem.</p>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__title">Campos</h3>
+        <div class="grid grid-3">
+          <div class="field">
+            <label for="sg-nome">Nome</label>
+            <input id="sg-nome" type="text" placeholder="Seu nome completo" />
+          </div>
+          <div class="field">
+            <label for="sg-destino">Destino</label>
+            <select id="sg-destino">
+              <option>Todos os destinos</option>
+              <option>Maldivas</option>
+              <option>Bali</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="sg-data">Mês da viagem</label>
+            <input id="sg-data" type="month" />
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__title">Barra de busca — Hero</h3>
+        <div class="search-bar">
+          <div class="field">
+            <label for="sg-b-destino">Destino</label>
+            <select id="sg-b-destino"><option>Para onde?</option><option>Maldivas</option><option>Bali</option></select>
+          </div>
+          <div class="field">
+            <label for="sg-b-mes">Mês</label>
+            <input id="sg-b-mes" type="month" />
+          </div>
+          <div class="field">
+            <label for="sg-b-preco">Faixa de preço</label>
+            <select id="sg-b-preco"><option>Qualquer valor</option><option>Até R$ 2.000</option><option>R$ 2.000 – R$ 5.000</option></select>
+          </div>
+          <div class="field">
+            <label for="sg-b-promo">Promoções</label>
+            <select id="sg-b-promo"><option>Todos os pacotes</option><option>Somente promoções</option></select>
+          </div>
+          <button class="btn btn--primary">Buscar Pacotes</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== BADGES ===================== -->
+  <section class="section" id="badges">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__eyebrow">Componentes</span>
+        <h2 class="section__title">Badges &amp; Selos</h2>
+      </div>
+      <div class="btn-row">
+        <span class="badge badge--promo">-20% Promoção</span>
+        <span class="badge badge--vagas">Restam 8 vagas</span>
+        <span class="badge badge--esgotado">Esgotado</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TOOLTIP ===================== -->
+  <section class="section" id="tooltip">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__eyebrow">Componentes</span>
+        <h2 class="section__title">Tooltip</h2>
+        <p class="section__desc">Aparece no hover e no foco (<code>:focus-within</code>) — acessível via teclado. Use Tab para testar.</p>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__title">Posições</h3>
+        <div class="btn-row" style="gap: var(--space-6);">
+          <span class="tooltip">
+            <button class="tooltip__trigger" aria-describedby="tt-1">?</button>
+            <span class="tooltip__bubble" id="tt-1" role="tooltip">Aparece acima do gatilho</span>
+          </span>
+
+          <span class="tooltip tooltip--bottom">
+            <button class="tooltip__trigger" aria-describedby="tt-2">?</button>
+            <span class="tooltip__bubble" id="tt-2" role="tooltip">Aparece abaixo do gatilho</span>
+          </span>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__title">Uso em contexto</h3>
+        <div class="btn-row">
+          <span class="badge badge--vagas" style="display:inline-flex; align-items:center; gap:6px;">
+            Restam 8 vagas
+            <span class="tooltip">
+              <button class="tooltip__trigger" aria-describedby="tt-3" style="width:18px; height:18px; font-size:10px;">?</button>
+              <span class="tooltip__bubble" id="tt-3" role="tooltip">Baseado nas reservas confirmadas nas últimas 24h</span>
+            </span>
+          </span>
+
+          <span class="tooltip">
+            <button class="btn btn--secondary btn--sm" aria-describedby="tt-4">Entrada de R$ 500</button>
+            <span class="tooltip__bubble" id="tt-4" role="tooltip">+ 10x de R$ 399 no cartão</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ ===================== -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__eyebrow">Componentes</span>
+        <h2 class="section__title">FAQ</h2>
+        <p class="section__desc">Accordion acessível — botão com <code>aria-expanded</code>, painel com <code>role="region"</code>, navegável por teclado.</p>
+      </div>
+
+      <div class="faq-list" id="faq-list">
+        <div class="faq-item is-open">
+          <h3>
+            <button class="faq-question" aria-expanded="true" aria-controls="faq-a1" id="faq-q1">
+              Como faço para reservar um pacote?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+          </h3>
+          <div class="faq-answer" id="faq-a1" role="region" aria-labelledby="faq-q1">
+            <p>Escolha o pacote, clique em "Reservar", preencha o formulário e selecione a forma de pagamento. Você recebe a confirmação por email e WhatsApp em até 24h.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <h3>
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-a2" id="faq-q2">
+              Posso parcelar o pagamento?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+          </h3>
+          <div class="faq-answer" id="faq-a2" role="region" aria-labelledby="faq-q2">
+            <p>Sim. Cada pacote mostra as condições de entrada e parcelamento na página de detalhes, com pagamento processado direto pelo gateway.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <h3>
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-a3" id="faq-q3">
+              Qual a política de cancelamento?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+          </h3>
+          <div class="faq-answer" id="faq-a3" role="region" aria-labelledby="faq-q3">
+            <p>Varia por pacote e está descrita na página de cada um, na seção de política de cancelamento.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <h3>
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-a4" id="faq-q4">
+              Meus dados de pagamento ficam salvos no site?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+          </h3>
+          <div class="faq-answer" id="faq-a4" role="region" aria-labelledby="faq-q4">
+            <p>Não. Nenhum dado de cartão é armazenado pela Átila Tour — todo processamento acontece diretamente no gateway de pagamento.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CARDS ===================== -->
+  <section class="section" id="cards">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__eyebrow">Componentes</span>
+        <h2 class="section__title">Cards</h2>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__title">Pacote</h3>
+        <div class="grid grid-3">
+          <article class="card card--pacote">
+            <div class="card__media">
+              <img src="https://placehold.co/480x360/f5f6f8/5c6472?text=Maldivas" alt="Maldivas" />
+              <span class="card__badge">-15% Promoção</span>
+              <span class="card__vagas">8 vagas</span>
+            </div>
+            <div class="card__body">
+              <div class="card__local">📍 Maldivas · 7 dias</div>
+              <h4 class="card__title">Ilhas Maldivas All Inclusive</h4>
+              <p class="ts-small">Passagem, hospedagem e café da manhã inclusos.</p>
+              <div class="card__meta">
+                <div>
+                  <div class="card__price-label">a partir de</div>
+                  <div class="card__price">R$ 4.899</div>
+                  <div class="card__installment">10x de R$ 489,90</div>
+                </div>
+                <button class="btn btn--secondary btn--sm">Ver detalhes</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card card--pacote">
+            <div class="card__media">
+              <img src="https://placehold.co/480x360/f5f6f8/5c6472?text=Bali" alt="Bali" />
+              <span class="card__vagas">Últimas vagas</span>
+            </div>
+            <div class="card__body">
+              <div class="card__local">📍 Bali, Indonésia · 9 dias</div>
+              <h4 class="card__title">Bali Essencial</h4>
+              <p class="ts-small">Roteiro completo com guia local incluso.</p>
+              <div class="card__meta">
+                <div>
+                  <div class="card__price-label">a partir de</div>
+                  <div class="card__price">R$ 6.290</div>
+                  <div class="card__installment">10x de R$ 629,00</div>
+                </div>
+                <button class="btn btn--secondary btn--sm">Ver detalhes</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="card card--pacote">
+            <div class="card__media">
+              <img src="https://placehold.co/480x360/f5f6f8/5c6472?text=Patagonia" alt="Patagônia" />
+            </div>
+            <div class="card__body">
+              <div class="card__local">📍 Patagônia, Argentina · 6 dias</div>
+              <h4 class="card__title">Aventura na Patagônia</h4>
+              <p class="ts-small">Trilhas guiadas e hospedagem em lodge.</p>
+              <div class="card__meta">
+                <div>
+                  <div class="card__price-label">a partir de</div>
+                  <div class="card__price">R$ 8.150</div>
+                  <div class="card__installment">10x de R$ 815,00</div>
+                </div>
+                <button class="btn btn--secondary btn--sm">Ver detalhes</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__title">Destino</h3>
+        <div class="grid grid-4">
+          <article class="card card--destino">
+            <img src="https://placehold.co/360x480/01348e/ffffff?text=Rio+de+Janeiro" alt="Rio de Janeiro" />
+            <div class="card__body"><h4 class="card__title">Rio de Janeiro</h4></div>
+          </article>
+          <article class="card card--destino">
+            <img src="https://placehold.co/360x480/002d87/ffffff?text=Fernando+de+Noronha" alt="Fernando de Noronha" />
+            <div class="card__body"><h4 class="card__title">Fernando de Noronha</h4></div>
+          </article>
+          <article class="card card--destino">
+            <img src="https://placehold.co/360x480/0149bc/ffffff?text=Gramado" alt="Gramado" />
+            <div class="card__body"><h4 class="card__title">Gramado</h4></div>
+          </article>
+          <article class="card card--destino">
+            <img src="https://placehold.co/360x480/010d24/ffffff?text=Lisboa" alt="Lisboa" />
+            <div class="card__body"><h4 class="card__title">Lisboa</h4></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__title">Diferencial</h3>
+        <div class="grid grid-4">
+          <div class="card card--diferencial">
+            <div class="card__icon">★</div>
+            <h4 class="card__title" style="font-size: var(--fs-body-lg);">Atendimento personalizado</h4>
+            <p class="ts-small">Consultores especializados do início ao fim da viagem.</p>
+          </div>
+          <div class="card card--diferencial">
+            <div class="card__icon">$</div>
+            <h4 class="card__title" style="font-size: var(--fs-body-lg);">Parcelamento facilitado</h4>
+            <p class="ts-small">Até 10x sem juros nos principais pacotes.</p>
+          </div>
+          <div class="card card--diferencial">
+            <div class="card__icon">✓</div>
+            <h4 class="card__title" style="font-size: var(--fs-body-lg);">Segurança</h4>
+            <p class="ts-small">Pagamento processado direto pelo gateway, sem armazenar dados de cartão.</p>
+          </div>
+          <div class="card card--diferencial">
+            <div class="card__icon">💬</div>
+            <h4 class="card__title" style="font-size: var(--fs-body-lg);">Suporte via WhatsApp</h4>
+            <p class="ts-small">Fale com a equipe antes, durante e depois da viagem.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__title">Depoimento</h3>
+        <div class="grid grid-3">
+          <article class="card card--depoimento">
+            <div class="stars">★★★★★</div>
+            <p class="ts-body">"Atendimento impecável, a viagem foi exatamente como planejado."</p>
+            <div class="depoimento__autor">
+              <div class="depoimento__avatar"><img src="https://placehold.co/80x80/f5f6f8/5c6472?text=MC" alt="" /></div>
+              <div>
+                <div class="depoimento__nome">Maria Clara</div>
+                <div class="depoimento__cidade">São Paulo, SP</div>
+              </div>
+            </div>
+          </article>
+          <article class="card card--depoimento">
+            <div class="stars">★★★★★</div>
+            <p class="ts-body">"Parcelamento facilitado e suporte rápido pelo WhatsApp. Recomendo."</p>
+            <div class="depoimento__autor">
+              <div class="depoimento__avatar"><img src="https://placehold.co/80x80/f5f6f8/5c6472?text=JP" alt="" /></div>
+              <div>
+                <div class="depoimento__nome">João Pedro</div>
+                <div class="depoimento__cidade">Belo Horizonte, MG</div>
+              </div>
+            </div>
+          </article>
+          <article class="card card--depoimento">
+            <div class="stars">★★★★★</div>
+            <p class="ts-body">"Já são três viagens com a Átila Tour, sempre com experiência excelente."</p>
+            <div class="depoimento__autor">
+              <div class="depoimento__avatar"><img src="https://placehold.co/80x80/f5f6f8/5c6472?text=AF" alt="" /></div>
+              <div>
+                <div class="depoimento__nome">Ana Ferreira</div>
+                <div class="depoimento__cidade">Curitiba, PR</div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ELEVAÇÃO ===================== -->
+  <section class="section" id="elevacao">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__eyebrow">Fundamentos</span>
+        <h2 class="section__title">Elevação</h2>
+        <p class="section__desc">Sombras sempre em camadas com tint de cor — nunca sombra flat.</p>
+      </div>
+      <div class="grid grid-4">
+        <div class="elevation-demo elevation-demo--sm">shadow-sm</div>
+        <div class="elevation-demo elevation-demo--md">shadow-md</div>
+        <div class="elevation-demo elevation-demo--lg">shadow-lg</div>
+        <div class="elevation-demo elevation-demo--accent">shadow-accent</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== GRID ===================== -->
+  <section class="section" id="grid">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__eyebrow">Fundamentos</span>
+        <h2 class="section__title">Grid</h2>
+        <p class="section__desc">Container de 1280px com 12 colunas no desktop, colapsando por breakpoint. Redimensione a janela para ver o comportamento responsivo.</p>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__title">Colunas (redimensione a janela)</h3>
+        <div class="grid-cols-demo" id="grid-cols-demo"></div>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__title">Breakpoints</h3>
+        <table class="breakpoint-table">
+          <thead>
+            <tr>
+              <th>Viewport</th>
+              <th>Container</th>
+              <th>Colunas</th>
+              <th>Margin</th>
+              <th>Gutter</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Desktop (&gt; 900px)</td>
+              <td>1280px (max-width)</td>
+              <td>12</td>
+              <td>20px</td>
+              <td>24px</td>
+            </tr>
+            <tr>
+              <td>Tablet (560–900px)</td>
+              <td>fluido</td>
+              <td>6</td>
+              <td>32px</td>
+              <td>20px</td>
+            </tr>
+            <tr>
+              <td>Mobile (&lt; 560px)</td>
+              <td>fluido</td>
+              <td>4 / coluna única</td>
+              <td>20px</td>
+              <td>16px</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__title">Classes utilitárias — <code>.grid-2 / .grid-3 / .grid-4 / .grid-6</code></h3>
+        <div style="display:flex; flex-direction:column; gap: var(--space-5);">
+          <div>
+            <p class="ts-small" style="margin-bottom: var(--space-2);">.grid-2</p>
+            <div class="grid grid-2 grid-util-demo">
+              <div class="grid-cols-demo__col">1</div>
+              <div class="grid-cols-demo__col">2</div>
+            </div>
+          </div>
+          <div>
+            <p class="ts-small" style="margin-bottom: var(--space-2);">.grid-3</p>
+            <div class="grid grid-3 grid-util-demo">
+              <div class="grid-cols-demo__col">1</div>
+              <div class="grid-cols-demo__col">2</div>
+              <div class="grid-cols-demo__col">3</div>
+            </div>
+          </div>
+          <div>
+            <p class="ts-small" style="margin-bottom: var(--space-2);">.grid-4</p>
+            <div class="grid grid-4 grid-util-demo">
+              <div class="grid-cols-demo__col">1</div>
+              <div class="grid-cols-demo__col">2</div>
+              <div class="grid-cols-demo__col">3</div>
+              <div class="grid-cols-demo__col">4</div>
+            </div>
+          </div>
+          <div>
+            <p class="ts-small" style="margin-bottom: var(--space-2);">.grid-6</p>
+            <div class="grid grid-6 grid-util-demo">
+              <div class="grid-cols-demo__col">1</div>
+              <div class="grid-cols-demo__col">2</div>
+              <div class="grid-cols-demo__col">3</div>
+              <div class="grid-cols-demo__col">4</div>
+              <div class="grid-cols-demo__col">5</div>
+              <div class="grid-cols-demo__col">6</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ESPAÇAMENTO ===================== -->
+  <section class="section" id="espacamento" style="border-bottom: none;">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__eyebrow">Fundamentos</span>
+        <h2 class="section__title">Espaçamento</h2>
+        <p class="section__desc">Escala base de 4px. Usar sempre os tokens — nunca valores aleatórios.</p>
+      </div>
+      <div id="space-scale"></div>
+    </div>
+  </section>
+
+  <footer style="background: var(--color-navy); padding: var(--space-6) 0; text-align:center;">
+    <img src="assets/logo-fundo-escuro.png" alt="Átila Tour" style="width:120px; margin-inline:auto; opacity:0.8;" />
+  </footer>
+
+  <script>
+    // Nav — toggle do menu mobile (hamburger)
+    document.querySelectorAll('.nav__toggle').forEach((toggle) => {
+      const panel = document.getElementById(toggle.getAttribute('aria-controls'));
+      toggle.addEventListener('click', () => {
+        const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!isOpen));
+        panel.classList.toggle('is-open', !isOpen);
+      });
+    });
+
+    // Accordion do FAQ — um item aberto por vez, controlado por aria-expanded
+    const faqList = document.getElementById('faq-list');
+    faqList.querySelectorAll('.faq-question').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = btn.getAttribute('aria-expanded') === 'true';
+
+        faqList.querySelectorAll('.faq-item.is-open').forEach((openItem) => {
+          if (openItem !== item) {
+            openItem.classList.remove('is-open');
+            openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        item.classList.toggle('is-open', !isOpen);
+        btn.setAttribute('aria-expanded', String(!isOpen));
+      });
+    });
+
+    // Demonstração das 12 colunas do grid
+    const gridColsDemo = document.getElementById('grid-cols-demo');
+    for (let i = 1; i <= 12; i++) {
+      const col = document.createElement('div');
+      col.className = 'grid-cols-demo__col';
+      col.textContent = i;
+      gridColsDemo.appendChild(col);
+    }
+
+    // Demonstração da escala de espaçamento a partir dos tokens
+    const tokens = ['1','2','3','4','5','6','7','8'];
+    const wrap = document.getElementById('space-scale');
+    tokens.forEach(t => {
+      const px = getComputedStyle(document.documentElement).getPropertyValue(`--space-${t}`).trim();
+      const row = document.createElement('div');
+      row.className = 'space-row';
+      row.innerHTML = `<span class="space-row__label">--space-${t} (${px})</span><span class="space-row__block" style="width:${px}"></span>`;
+      wrap.appendChild(row);
+    });
+  </script>
+</body>
+</html>

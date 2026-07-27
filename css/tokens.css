@@ -1,0 +1,107 @@
+/* =========================================================
+   ÁTILA TOUR — DESIGN TOKENS
+   Fonte da verdade: instrucoes/projeto-guide.md (Design System)
+   Não adicionar cores/valores fora deste arquivo.
+   ========================================================= */
+
+:root {
+  /* ---------- Cor: marca ---------- */
+  --color-primary: #01348e;
+  --color-primary-dark: #002d87;
+  --color-primary-light: #0149bc;
+  --gradient-primary: linear-gradient(135deg, #002d87, #0149bc);
+  --color-navy: #010d24;
+  --color-accent: #fd9e0a;
+  --color-accent-dark: #e08600;
+
+  /* ---------- Cor: neutros ---------- */
+  --color-background: #ffffff;
+  --color-surface: #f5f6f8;
+  --color-text: #0a0f1a;
+  --color-text-muted: #5c6472;
+  --color-border: #e2e5ea;
+  --color-white: #ffffff;
+
+  /* ---------- Cor: feedback ---------- */
+  --color-success: #1a8f5e;
+  --color-danger: #d1483f;
+
+  /* ---------- Tipografia ---------- */
+  --font-base: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --fs-display: clamp(2.5rem, 1.7rem + 3.2vw, 4rem);      /* 40px -> 64px */
+  --fs-h1: clamp(2rem, 1.5rem + 2vw, 3rem);                /* 32px -> 48px */
+  --fs-h2: clamp(1.625rem, 1.35rem + 1.1vw, 2rem);         /* 26px -> 32px */
+  --fs-h3: 1.375rem;                                       /* 22px */
+  --fs-h4: 1.25rem;                                        /* 20px */
+  --fs-h5: 1.125rem;                                       /* 18px */
+  --fs-h6: 1rem;                                           /* 16px */
+  --fs-body-lg: 1.125rem;                                  /* 18px — Textos / Large */
+  --fs-medium: 1.0625rem;                                  /* 17px — Textos / Medium */
+  --fs-body: 1rem;                                         /* 16px — Textos / Regular */
+  --fs-small: 0.875rem;                                    /* 14px — Textos / Small */
+  --fs-xs: 0.75rem;                                        /* 12px — Textos / Tiny */
+
+  --lh-display: 1.05;
+  --lh-heading: 1.15;
+  --lh-body: 1.6;
+  --lh-small: 1.5;
+
+  --tracking-display: -0.02em;
+  --tracking-heading: -0.015em;
+  --tracking-normal: 0;
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
+  --fw-black: 800;
+
+  /* ---------- Espaçamento (escala base 4px) ---------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+
+  /* ---------- Grid / container ---------- */
+  --container-max: 1280px;
+  --container-padding: 20px;
+  --grid-gap: 24px;
+
+  /* ---------- Raio ---------- */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 999px;
+
+  /* ---------- Sombras (em camadas, com tint de cor, nunca flat) ---------- */
+  --shadow-sm:
+    0 1px 2px rgba(10, 15, 26, 0.06),
+    0 1px 1px rgba(1, 52, 142, 0.05);
+  --shadow-md:
+    0 6px 16px rgba(10, 15, 26, 0.08),
+    0 2px 6px rgba(1, 52, 142, 0.08);
+  --shadow-lg:
+    0 20px 40px rgba(10, 15, 26, 0.12),
+    0 6px 12px rgba(1, 52, 142, 0.1);
+  --shadow-accent:
+    0 10px 24px rgba(253, 158, 10, 0.28),
+    0 2px 6px rgba(253, 158, 10, 0.2);
+
+  /* ---------- Camadas (z-index) ---------- */
+  --z-base: 1;
+  --z-elevated: 10;
+  --z-floating: 100;
+  --z-modal: 1000;
+
+  /* ---------- Easing / duração (uso exclusivo com GSAP, transform/opacity) ---------- */
+  --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 0.2s;
+  --duration-base: 0.35s;
+  --duration-slow: 0.6s;
+}
