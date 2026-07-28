@@ -40,7 +40,11 @@
   position: relative;
   padding-bottom: var(--space-8);
   border-radius: var(--radius-md);
-  overflow-x: hidden;
+  /* overflow-x:hidden + overflow-y:visible pareceria certo, mas por spec
+     do CSS, misturar "visible" com qualquer outro valor força o "visible"
+     a virar "auto" (vira scroll container e CORTA a sombra/elevação do
+     hover no eixo Y). "clip" mascara igual no X sem sofrer essa conversão. */
+  overflow-x: clip;
   overflow-y: visible;
 }
 
@@ -122,10 +126,17 @@
 .carousel-nav .swiper-button-prev { left: -18px; }
 .carousel-nav .swiper-button-next { right: -18px; }
 
-.carousel-nav .swiper-button-prev:hover,
-.carousel-nav .swiper-button-next:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-50%) scale(1.08);
+/* Só em dispositivos com mouse de verdade — em touch, :hover fica
+   "grudado" depois do tap (sem mouseleave), deixando a seta com
+   sombra/escala de hover marcada até o usuário tocar em outro lugar. */
+@media (hover: hover) and (pointer: fine) {
+  .carousel-nav .swiper-button-prev:hover,
+  .carousel-nav .swiper-button-next:hover {
+    /* sombra própria, mais contida que --shadow-md — num círculo de 44px
+       o blur/spread do token padrão fica desproporcional e "pesado" */
+    box-shadow: 0 6px 14px rgba(1, 52, 142, 0.2), 0 2px 5px rgba(10, 15, 26, 0.1);
+    transform: translateY(-50%) scale(1.05);
+  }
 }
 
 .carousel-nav .swiper-button-prev:active,

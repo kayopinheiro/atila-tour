@@ -66,6 +66,8 @@
 .hero__content {
   position: relative;
   z-index: 2;
+  width: 100%; /* .container tem margin-inline:auto, que sem width explícita
+                  encolhe (ou estoura) o item flex em vez de preencher o pai */
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -136,6 +138,21 @@
   gap: var(--space-2);
 }
 
+/* No mobile o formulário empilhado fica bem mais alto — tirar o indicador
+   do position:absolute evita que ele fique sobre o botão "Buscar Pacotes"
+   quando o conteúdo empurra o Hero além de 100svh. */
+@media (max-width: 640px) {
+  .hero__scroll-cue {
+    position: static;
+    left: auto;
+    bottom: auto;
+    transform: none;
+    width: 100%;
+    margin-top: var(--space-6);
+    padding-bottom: var(--space-6);
+  }
+}
+
 .hero__scroll-label {
   font-size: var(--fs-xs);
   font-weight: var(--fw-bold);
@@ -184,10 +201,23 @@
 @media (max-width: 640px) {
   .hero__content {
     padding-top: calc(var(--space-8) + 56px);
+    padding-bottom: var(--space-7);
+  }
+
+  .hero__tagline {
+    margin-bottom: var(--space-4);
   }
 
   .hero__title {
     max-width: 100%;
+    font-size: 1.75rem; /* --fs-display (40px) quebra em 4 linhas em telas de 375px; reduz pra caber em 2 */
+    margin-bottom: var(--space-4);
+  }
+
+  .hero__subtitle {
+    max-width: 32ch;
+    font-size: var(--fs-body);
+    margin-bottom: var(--space-6);
   }
 }
 
