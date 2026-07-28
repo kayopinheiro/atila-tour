@@ -725,6 +725,9 @@ ul { list-style: none; }
 @media (max-width: 900px) {
   .nav__links { display: none; }
   .nav__toggle { display: flex; }
+  /* No mobile o CTA já existe fixo dentro do drawer — manter os dois
+     deixa a navbar poluída num espaço que é só logo + hamburger. */
+  .nav__actions > .btn { display: none; }
 }
 
 /* Trava o scroll da página por trás enquanto o drawer está aberto. */

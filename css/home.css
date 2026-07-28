@@ -53,13 +53,25 @@
 }
 
 /* .nav--dark por padrão tem fundo navy sólido (usado no style guide e
-   em seções internas). Aqui, sobre o vídeo, o header fica transparente. */
+   em seções internas). Aqui, sobre o vídeo, o header fica transparente
+   até o usuário rolar a página (ver .is-scrolled abaixo). */
 .site-header .nav--dark {
   background: transparent;
+  transition: background-color var(--duration-base) var(--ease-smooth),
+              box-shadow var(--duration-base) var(--ease-smooth);
 }
 
-.site-header .nav__mobile-panel--dark.is-open {
+/* Ao rolar (classe controlada por initStickyHeader em js/main.js): sai do
+   fluxo do .hero e gruda no topo da viewport, com fundo sólido de volta —
+   sem isso o header (position:absolute) some da tela junto com o resto
+   do Hero assim que o usuário rola. */
+.site-header.is-scrolled {
+  position: fixed;
+}
+
+.site-header.is-scrolled .nav--dark {
   background: var(--color-navy);
+  box-shadow: var(--shadow-md);
 }
 
 /* ---------- Conteúdo do Hero ---------- */

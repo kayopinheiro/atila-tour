@@ -7,7 +7,26 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeroReveal();
   initWhatsAppFloat();
   initPacotesCarousel();
+  initStickyHeader();
 });
+
+/**
+ * Header — fica fixo e ganha fundo sólido assim que a página rola.
+ * Limiar baixo (16px) de propósito: o header é position:absolute preso
+ * ao topo do .hero, então rolar a página o arrasta pra fora da tela
+ * junto com o resto do conteúdo — a troca pra position:fixed precisa
+ * acontecer quase no início do scroll pra não "sumir e reaparecer".
+ */
+function initStickyHeader() {
+  const header = document.querySelector('.site-header');
+  if (!header) return;
+
+  const SCROLL_THRESHOLD = 16;
+  const update = () => header.classList.toggle('is-scrolled', window.scrollY > SCROLL_THRESHOLD);
+
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+}
 
 /**
  * Botão flutuante do WhatsApp — injetado em toda página que carregar
