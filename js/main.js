@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavToggle();
   initHeroReveal();
   initWhatsAppFloat();
+  initPacotesCarousel();
 });
 
 /**
@@ -32,6 +33,44 @@ function initWhatsAppFloat() {
   `;
 
   document.body.appendChild(link);
+}
+
+/**
+ * Carrossel de Pacotes em Destaque (SwiperJS).
+ */
+function initPacotesCarousel() {
+  const el = document.getElementById('swiper-pacotes-destaque');
+  if (!el || typeof Swiper === 'undefined') return;
+
+  // As setas ficam em .carousel-nav (irmãs de .carousel, não descendentes —
+  // ver nota em css/carousel.css), por isso são buscadas a partir do wrapper
+  // externo, não com um seletor escopado dentro do próprio #swiper-pacotes-destaque.
+  const nav = el.closest('.carousel-nav');
+
+  new Swiper(el, {
+    // Mobile: 1 card por vez, ocupando toda a largura, sem prévia do
+    // próximo/anterior. Tablet e desktop mostram mais cards (breakpoints).
+    slidesPerView: 1,
+    spaceBetween: 20,
+    observer: true,
+    observeParents: true,
+    pagination: { el: el.querySelector('.swiper-pagination'), clickable: true },
+    navigation: {
+      nextEl: nav ? nav.querySelector('.swiper-button-next') : null,
+      prevEl: nav ? nav.querySelector('.swiper-button-prev') : null,
+    },
+    keyboard: { enabled: true },
+    a11y: true,
+    autoplay: {
+      delay: 4500,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    },
+    breakpoints: {
+      640: { slidesPerView: 2, spaceBetween: 24 },
+      1000: { slidesPerView: 3, spaceBetween: 24 },
+    },
+  });
 }
 
 /**

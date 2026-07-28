@@ -29,9 +29,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/14.0.5/swiper-bundle.min.css" />
   <link rel="stylesheet" href="css/tokens.css" />
   <!-- Reaproveita os componentes já validados no style guide (Nav, botões, campos, barra de busca) -->
   <link rel="stylesheet" href="css/style-guide.css" />
+  <link rel="stylesheet" href="css/carousel.css" />
   <link rel="stylesheet" href="css/home.css" />
   <link rel="stylesheet" href="css/whatsapp-button.css" />
 </head>
@@ -140,10 +142,161 @@
     </div>
   </section>
 
-  <!-- Próximas seções da Home (Pacotes em Destaque, Destinos Populares, Promoções,
-       Diferenciais, Depoimentos, Blog, CTA, Footer) entram aqui nos próximos passos. -->
+  <!-- ===================== PACOTES EM DESTAQUE ===================== -->
+  <section class="section" id="pacotes-destaque">
+    <div class="container">
+      <div class="section__header section__header--center">
+        <span class="section__eyebrow">Selecionados a dedo</span>
+        <h2 class="section__title">Pacotes em Destaque</h2>
+        <p class="section__desc">Roteiros com parcelamento facilitado, vagas limitadas e atendimento personalizado do início ao fim.</p>
+      </div>
+
+      <div class="carousel-nav">
+        <div class="carousel swiper" id="swiper-pacotes-destaque">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <article class="card card--pacote">
+                <div class="card__media">
+                  <img src="https://placehold.co/480x360/f5f6f8/5c6472?text=Maldivas" alt="Maldivas" loading="lazy" />
+                  <span class="card__badge">-15% Promoção</span>
+                  <span class="card__vagas">8 vagas</span>
+                </div>
+                <div class="card__body">
+                  <div class="card__local">📍 Maldivas · 7 dias</div>
+                  <h3 class="card__title">Ilhas Maldivas All Inclusive</h3>
+                  <div class="card__meta">
+                    <div>
+                      <div class="card__price-label">a partir de</div>
+                      <div class="card__price">R$ 4.899</div>
+                      <div class="card__installment">10x de R$ 489,90</div>
+                    </div>
+                    <button class="btn btn--secondary btn--sm">Ver detalhes</button>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div class="swiper-slide">
+              <article class="card card--pacote">
+                <div class="card__media">
+                  <img src="https://placehold.co/480x360/f5f6f8/5c6472?text=Bali" alt="Bali" loading="lazy" />
+                  <span class="card__vagas">Últimas vagas</span>
+                </div>
+                <div class="card__body">
+                  <div class="card__local">📍 Bali, Indonésia · 9 dias</div>
+                  <h3 class="card__title">Bali Essencial</h3>
+                  <div class="card__meta">
+                    <div>
+                      <div class="card__price-label">a partir de</div>
+                      <div class="card__price">R$ 6.290</div>
+                      <div class="card__installment">10x de R$ 629,00</div>
+                    </div>
+                    <button class="btn btn--secondary btn--sm">Ver detalhes</button>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div class="swiper-slide">
+              <article class="card card--pacote">
+                <div class="card__media">
+                  <img src="https://placehold.co/480x360/f5f6f8/5c6472?text=Patagonia" alt="Patagônia" loading="lazy" />
+                </div>
+                <div class="card__body">
+                  <div class="card__local">📍 Patagônia, Argentina · 6 dias</div>
+                  <h3 class="card__title">Aventura na Patagônia</h3>
+                  <div class="card__meta">
+                    <div>
+                      <div class="card__price-label">a partir de</div>
+                      <div class="card__price">R$ 8.150</div>
+                      <div class="card__installment">10x de R$ 815,00</div>
+                    </div>
+                    <button class="btn btn--secondary btn--sm">Ver detalhes</button>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div class="swiper-slide">
+              <article class="card card--pacote">
+                <div class="card__media">
+                  <img src="https://placehold.co/480x360/f5f6f8/5c6472?text=Lisboa" alt="Lisboa" loading="lazy" />
+                  <span class="card__badge">-10% Promoção</span>
+                </div>
+                <div class="card__body">
+                  <div class="card__local">📍 Lisboa, Portugal · 8 dias</div>
+                  <h3 class="card__title">Lisboa &amp; Sintra</h3>
+                  <div class="card__meta">
+                    <div>
+                      <div class="card__price-label">a partir de</div>
+                      <div class="card__price">R$ 5.490</div>
+                      <div class="card__installment">10x de R$ 549,00</div>
+                    </div>
+                    <button class="btn btn--secondary btn--sm">Ver detalhes</button>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div class="swiper-slide">
+              <article class="card card--pacote">
+                <div class="card__media">
+                  <img src="https://placehold.co/480x360/f5f6f8/5c6472?text=Cancun" alt="Cancún" loading="lazy" />
+                  <span class="card__vagas">12 vagas</span>
+                </div>
+                <div class="card__body">
+                  <div class="card__local">📍 Cancún, México · 8 dias</div>
+                  <h3 class="card__title">Cancún All Inclusive</h3>
+                  <div class="card__meta">
+                    <div>
+                      <div class="card__price-label">a partir de</div>
+                      <div class="card__price">R$ 5.790</div>
+                      <div class="card__installment">10x de R$ 579,00</div>
+                    </div>
+                    <button class="btn btn--secondary btn--sm">Ver detalhes</button>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div class="swiper-slide">
+              <article class="card card--pacote">
+                <div class="card__media">
+                  <img src="https://placehold.co/480x360/f5f6f8/5c6472?text=Paris" alt="Paris" loading="lazy" />
+                  <span class="card__badge">-8% Promoção</span>
+                </div>
+                <div class="card__body">
+                  <div class="card__local">📍 Paris, França · 7 dias</div>
+                  <h3 class="card__title">Paris Romântica</h3>
+                  <div class="card__meta">
+                    <div>
+                      <div class="card__price-label">a partir de</div>
+                      <div class="card__price">R$ 7.390</div>
+                      <div class="card__installment">10x de R$ 739,00</div>
+                    </div>
+                    <button class="btn btn--secondary btn--sm">Ver detalhes</button>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+        <button class="swiper-button-prev" aria-label="Pacote anterior">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" fill="currentColor" aria-hidden="true"><path d="M560-267.69 347.69-480 560-692.31 588.31-664l-184 184 184 184L560-267.69Z"/></svg>
+        </button>
+        <button class="swiper-button-next" aria-label="Próximo pacote">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" fill="currentColor" aria-hidden="true"><path d="m531.69-480-184-184L376-692.31 588.31-480 376-267.69 347.69-296l184-184Z"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Próximas seções da Home (Destinos Populares, Promoções, Diferenciais,
+       Depoimentos, Blog, CTA, Footer) entram aqui nos próximos passos. -->
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/14.0.5/swiper-bundle.min.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

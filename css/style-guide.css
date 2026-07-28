@@ -46,6 +46,14 @@ ul { list-style: none; }
   max-width: 640px;
 }
 
+/* Variante centralizada — usada quando o conteúdo abaixo (carrossel, grid)
+   também é centralizado, pra manter o bloco de texto alinhado ao centro
+   da composição em vez de ficar solto à esquerda. */
+.section__header--center {
+  margin-inline: auto;
+  text-align: center;
+}
+
 .section__eyebrow {
   display: inline-block;
   font-size: var(--fs-small);

@@ -671,8 +671,8 @@
 
       <div class="subsection">
         <h3 class="subsection__title">Pacotes em destaque</h3>
-        <div class="carousel swiper" id="swiper-pacotes">
-          <div class="carousel__track">
+        <div class="carousel-nav">
+          <div class="carousel swiper" id="swiper-pacotes">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
                 <article class="card card--pacote">
@@ -755,18 +755,22 @@
                 </article>
               </div>
             </div>
+            <div class="swiper-pagination"></div>
           </div>
-          <div class="swiper-pagination"></div>
-          <button class="swiper-button-prev" aria-label="Pacote anterior"></button>
-          <button class="swiper-button-next" aria-label="Próximo pacote"></button>
+          <button class="swiper-button-prev" aria-label="Pacote anterior">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" fill="currentColor" aria-hidden="true"><path d="M560-267.69 347.69-480 560-692.31 588.31-664l-184 184 184 184L560-267.69Z"/></svg>
+          </button>
+          <button class="swiper-button-next" aria-label="Próximo pacote">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" fill="currentColor" aria-hidden="true"><path d="m531.69-480-184-184L376-692.31 588.31-480 376-267.69 347.69-296l184-184Z"/></svg>
+          </button>
         </div>
       </div>
 
       <div class="subsection">
         <h3 class="subsection__title">Depoimentos (sobre fundo escuro)</h3>
         <div class="carousel-frame--dark">
-        <div class="carousel carousel--dark swiper" id="swiper-depoimentos">
-          <div class="carousel__track">
+          <div class="carousel-nav">
+            <div class="carousel carousel--dark swiper" id="swiper-depoimentos">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
                 <article class="card card--depoimento" style="background: transparent; border: 1px solid rgba(255,255,255,0.12);">
@@ -808,11 +812,15 @@
                 </article>
               </div>
             </div>
+            <div class="swiper-pagination"></div>
+            </div>
+            <button class="swiper-button-prev" aria-label="Depoimento anterior">
+              <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" fill="currentColor" aria-hidden="true"><path d="M560-267.69 347.69-480 560-692.31 588.31-664l-184 184 184 184L560-267.69Z"/></svg>
+            </button>
+            <button class="swiper-button-next" aria-label="Próximo depoimento">
+              <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" fill="currentColor" aria-hidden="true"><path d="m531.69-480-184-184L376-692.31 588.31-480 376-267.69 347.69-296l184-184Z"/></svg>
+            </button>
           </div>
-          <div class="swiper-pagination"></div>
-          <button class="swiper-button-prev" aria-label="Depoimento anterior"></button>
-          <button class="swiper-button-next" aria-label="Próximo depoimento"></button>
-        </div>
         </div>
       </div>
     </div>
@@ -1031,24 +1039,43 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/14.0.5/swiper-bundle.min.js"></script>
   <script>
+    // As setas ficam em .carousel-nav (irmãs de .carousel, não descendentes —
+    // ver nota em css/carousel.css), por isso são buscadas a partir do wrapper
+    // externo, não com um seletor escopado dentro do próprio .carousel.
+
     // Carrossel — Pacotes em destaque
-    new Swiper('#swiper-pacotes', {
-      slidesPerView: 1.15,
-      spaceBetween: 20,
-      observer: true,
-      observeParents: true,
-      pagination: { el: '#swiper-pacotes .swiper-pagination', clickable: true },
-      navigation: { nextEl: '#swiper-pacotes .swiper-button-next', prevEl: '#swiper-pacotes .swiper-button-prev' },
-      keyboard: { enabled: true },
-      a11y: true,
-      breakpoints: {
-        640: { slidesPerView: 2, spaceBetween: 24 },
-        1000: { slidesPerView: 3, spaceBetween: 24 },
-      },
-    });
+    (() => {
+      const el = document.getElementById('swiper-pacotes');
+      const nav = el.closest('.carousel-nav');
+      new Swiper(el, {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        observer: true,
+        observeParents: true,
+        pagination: { el: el.querySelector('.swiper-pagination'), clickable: true },
+        navigation: {
+          nextEl: nav ? nav.querySelector('.swiper-button-next') : null,
+          prevEl: nav ? nav.querySelector('.swiper-button-prev') : null,
+        },
+        keyboard: { enabled: true },
+        a11y: true,
+        autoplay: {
+          delay: 4500,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+        },
+        breakpoints: {
+          640: { slidesPerView: 2, spaceBetween: 24 },
+          1000: { slidesPerView: 3, spaceBetween: 24 },
+        },
+      });
+    })();
 
     // Carrossel — Depoimentos
-    new Swiper('#swiper-depoimentos', {
+    (() => {
+    const el = document.getElementById('swiper-depoimentos');
+    const nav = el.closest('.carousel-nav');
+    new Swiper(el, {
       slidesPerView: 1,
       spaceBetween: 24,
       // loop desativado: com só 3 depoimentos e 2 por view no desktop,
@@ -1056,14 +1083,18 @@
       // direito e acaba quebrando o cálculo de largura.
       observer: true,
       observeParents: true,
-      pagination: { el: '#swiper-depoimentos .swiper-pagination', clickable: true },
-      navigation: { nextEl: '#swiper-depoimentos .swiper-button-next', prevEl: '#swiper-depoimentos .swiper-button-prev' },
+      pagination: { el: el.querySelector('.swiper-pagination'), clickable: true },
+      navigation: {
+        nextEl: nav ? nav.querySelector('.swiper-button-next') : null,
+        prevEl: nav ? nav.querySelector('.swiper-button-prev') : null,
+      },
       keyboard: { enabled: true },
       a11y: true,
       breakpoints: {
         800: { slidesPerView: 2, spaceBetween: 24 },
       },
     });
+    })();
   </script>
   <script>
     // Nav — toggle do menu mobile (hamburger)

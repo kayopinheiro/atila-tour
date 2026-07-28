@@ -8,28 +8,51 @@
    `new Swiper(...)` — o Swiper mede a largura DELE pra calcular
    o deslocamento dos slides. Por isso ele não pode ter padding
    horizontal (senão o cálculo de largura fica errado e o
-   carrossel "trava"/não avança direito). As setas ficam
-   posicionadas por cima da borda do track (inset), não num
-   corredor externo.
+   carrossel "trava"/não avança direito).
+
+   ESTRUTURA: o Swiper exige que .swiper-wrapper seja filho DIRETO
+   do elemento raiz .swiper (sem nenhuma div entre os dois) — caso
+   contrário a montagem falha silenciosamente. Por isso o mascaramento
+   arredondado (overflow/border-radius) fica no próprio .carousel, que
+   já recebe overflow:hidden por padrão da base CSS do Swiper.
+
+   SETAS: como .carousel precisa de overflow:hidden (acima), as setas
+   não podem ser filhas dele — ficariam cortadas sempre que precisassem
+   ficar por fora da área dos cards. Por isso existe o wrapper externo
+   .carousel-nav (position:relative, sem overflow, sem padding, sem
+   participar de flex/grid), que contém .carousel + os dois botões como
+   irmãos. As setas são position:absolute com deslocamento negativo
+   (left/right) — isso as tira do fluxo do layout, então .carousel
+   sempre ocupa 100% da largura do wrapper, sem encolher pra abrir
+   espaço pra elas.
+
+   HOVER DOS CARDS: overflow:hidden no eixo X continua obrigatório (é o
+   que mascara os slides durante o arraste). Mas isso cortaria a sombra
+   do hover (.card:hover já eleva + aumenta sombra, ver style-guide.css)
+   sempre que ela crescesse verticalmente pra fora da faixa visível. Por
+   isso o overflow é separado por eixo: X hidden (Swiper), Y visible
+   (sombra livre pra cima/baixo). z-index no slide hover garante que a
+   sombra apareça por cima dos cards vizinhos, não por baixo.
    ========================================================= */
 
 .carousel {
   --swiper-theme-color: var(--color-primary);
   position: relative;
   padding-bottom: var(--space-8);
-}
-
-/* Envolve só o swiper-wrapper — é aqui que o "mascaramento" dos slides
-   acontece. Tem a MESMA largura de .carousel (sem padding lateral),
-   então bate exatamente com o que o Swiper calcula internamente. */
-.carousel__track {
-  overflow: hidden;
   border-radius: var(--radius-md);
+  overflow-x: hidden;
+  overflow-y: visible;
 }
 
 .carousel .swiper-slide {
+  position: relative;
   height: auto;
   display: flex;
+  z-index: 1;
+}
+
+.carousel .swiper-slide:hover {
+  z-index: 2;
 }
 
 .carousel .swiper-slide > * {
@@ -55,63 +78,80 @@
   transform: scale(1.2);
 }
 
-/* ---------- Setas ----------
-   Inset sobre a borda do track (padrão comum, tipo Netflix) — não
-   dependem de nenhum padding externo, então nunca desalinham o
-   cálculo de largura do Swiper. Ícone via SVG de fundo, não usa a
-   fonte de ícones do Swiper (evita renderizar "vazio"). */
-.carousel .swiper-button-prev,
-.carousel .swiper-button-next {
-  top: 50%;
-  width: 44px;
-  height: 44px;
-  margin-top: -22px;
-  z-index: 20;
-  background-color: var(--color-white);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 18px 18px;
-  border-radius: 999px;
-  box-shadow: 0 6px 16px rgba(10, 15, 26, 0.18), 0 2px 6px rgba(1, 52, 142, 0.14);
-  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+/* ---------- Wrapper de navegação ----------
+   Contém .carousel (overflow:hidden, ver nota no topo do arquivo) e as
+   duas setas como IRMÃS dele, nunca como filhas — assim elas nunca são
+   cortadas mesmo ficando fora da área dos cards. */
+.carousel-nav {
+  position: relative;
 }
 
-.carousel .swiper-button-prev::after,
-.carousel .swiper-button-next::after {
+.carousel-nav .swiper-button-prev,
+.carousel-nav .swiper-button-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: var(--z-elevated);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.carousel-nav .swiper-button-prev svg,
+.carousel-nav .swiper-button-next svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.carousel-nav .swiper-button-prev::after,
+.carousel-nav .swiper-button-next::after {
   content: none !important;
 }
 
-.carousel .swiper-button-prev {
-  left: 12px;
-  right: auto;
-  inset-inline-start: 12px;
-  inset-inline-end: auto;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%2301348E' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='15 18 9 12 15 6'%3E%3C/polyline%3E%3C/svg%3E");
+/* Deslocamento negativo pequeno (dentro de 16-24px) — a seta fica
+   majoritariamente pra fora do card, sobrepondo só uma fatia discreta
+   da borda, sem nunca encolher .carousel (position:absolute). */
+.carousel-nav .swiper-button-prev { left: -18px; }
+.carousel-nav .swiper-button-next { right: -18px; }
+
+.carousel-nav .swiper-button-prev:hover,
+.carousel-nav .swiper-button-next:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-50%) scale(1.08);
 }
 
-.carousel .swiper-button-next {
-  right: 12px;
-  left: auto;
-  inset-inline-end: 12px;
-  inset-inline-start: auto;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%2301348E' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='9 18 15 12 9 6'%3E%3C/polyline%3E%3C/svg%3E");
+.carousel-nav .swiper-button-prev:active,
+.carousel-nav .swiper-button-next:active {
+  transform: translateY(-50%) scale(0.96);
 }
 
-.carousel .swiper-button-prev:hover,
-.carousel .swiper-button-next:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 22px rgba(10, 15, 26, 0.22), 0 4px 8px rgba(1, 52, 142, 0.18);
-}
-
-.carousel .swiper-button-prev:focus-visible,
-.carousel .swiper-button-next:focus-visible {
-  outline: 2px solid var(--color-primary);
+.carousel-nav .swiper-button-prev:focus-visible,
+.carousel-nav .swiper-button-next:focus-visible {
+  outline: 2px solid var(--color-primary-light);
   outline-offset: 3px;
 }
 
-.carousel .swiper-button-disabled {
+.carousel-nav .swiper-button-disabled {
   opacity: 0.35;
   pointer-events: none;
+}
+
+/* Mobile: sem espaço pra setas sem sobrepor conteúdo do card único em
+   tela — navegação fica só por swipe (touch já habilitado por padrão
+   no Swiper) + autoplay. Tablet/desktop mantêm as setas. */
+@media (max-width: 640px) {
+  .carousel-nav .swiper-button-prev,
+  .carousel-nav .swiper-button-next {
+    display: none;
+  }
 }
 
 /* ---------- Variante escura (depoimentos) ----------
@@ -127,9 +167,6 @@
 
 .carousel--dark {
   --swiper-theme-color: var(--color-accent);
-}
-
-.carousel--dark .carousel__track {
   border-radius: var(--radius-sm);
 }
 
@@ -139,14 +176,4 @@
 
 .carousel--dark .swiper-pagination-bullet-active {
   background: var(--color-accent);
-}
-
-@media (max-width: 640px) {
-  .carousel .swiper-button-prev,
-  .carousel .swiper-button-next {
-    width: 36px;
-    height: 36px;
-    margin-top: -18px;
-    background-size: 14px 14px;
-  }
 }
