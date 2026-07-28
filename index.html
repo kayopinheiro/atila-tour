@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Átila Tour — Pacotes de Viagem, Destinos e Promoções</title>
+  <meta name="description" content="Viagens que conectam destinos e histórias. Encontre pacotes de viagem com parcelamento facilitado, atendimento personalizado e suporte via WhatsApp na Átila Tour." />
+  <!-- TODO: atualizar para o domínio real de produção antes de publicar -->
+  <link rel="canonical" href="https://www.atilatour.com.br/" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Átila Tour" />
+  <meta property="og:title" content="Átila Tour — Pacotes de Viagem, Destinos e Promoções" />
+  <meta property="og:description" content="Viagens que conectam destinos e histórias. Encontre pacotes de viagem com parcelamento facilitado, atendimento personalizado e suporte via WhatsApp." />
+  <meta property="og:image" content="/assets/hero-poster.jpg" />
+  <meta property="og:url" content="https://www.atilatour.com.br/" />
+  <meta property="og:locale" content="pt_BR" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Átila Tour — Pacotes de Viagem, Destinos e Promoções" />
+  <meta name="twitter:description" content="Viagens que conectam destinos e histórias. Pacotes com parcelamento facilitado e atendimento personalizado." />
+  <meta name="twitter:image" content="/assets/hero-poster.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/tokens.css" />
+  <!-- Reaproveita os componentes já validados no style guide (Nav, botões, campos, barra de busca) -->
+  <link rel="stylesheet" href="css/style-guide.css" />
+  <link rel="stylesheet" href="css/home.css" />
+  <link rel="stylesheet" href="css/whatsapp-button.css" />
+</head>
+<body>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero">
+    <div class="hero__media">
+      <video
+        class="hero__video"
+        autoplay
+        muted
+        loop
+        playsinline
+        poster="assets/hero-poster.jpg"
+        aria-hidden="true"
+      >
+        <source src="assets/hero-video.mp4" type="video/mp4" />
+      </video>
+      <div class="hero__overlay"></div>
+    </div>
+
+    <header class="site-header">
+      <nav class="nav nav--dark" aria-label="Navegação principal">
+        <a class="nav__logo" href="/"><img src="assets/logo-fundo-escuro.png" alt="Átila Tour" /></a>
+        <ul class="nav__links">
+          <li><a class="nav__link is-active" href="/">Home</a></li>
+          <li><a class="nav__link" href="/pacotes">Pacotes</a></li>
+          <li><a class="nav__link" href="/destinos">Destinos</a></li>
+          <li><a class="nav__link" href="/promocoes">Promoções</a></li>
+          <li><a class="nav__link" href="/blog">Dicas de Viagem</a></li>
+          <li><a class="nav__link" href="/sobre">Sobre</a></li>
+          <li><a class="nav__link" href="/contato">Contato</a></li>
+        </ul>
+        <div class="nav__actions">
+          <button class="btn btn--accent btn--sm">Falar pelo WhatsApp</button>
+          <button class="nav__toggle" aria-expanded="false" aria-controls="nav-mobile-home" aria-label="Abrir menu">
+            <span class="nav__toggle-bar"></span>
+            <span class="nav__toggle-bar"></span>
+            <span class="nav__toggle-bar"></span>
+          </button>
+        </div>
+      </nav>
+      <div class="nav__mobile-panel nav__mobile-panel--dark" id="nav-mobile-home">
+        <ul class="nav__mobile-links">
+          <li><a class="nav__link is-active" href="/">Home</a></li>
+          <li><a class="nav__link" href="/pacotes">Pacotes</a></li>
+          <li><a class="nav__link" href="/destinos">Destinos</a></li>
+          <li><a class="nav__link" href="/promocoes">Promoções</a></li>
+          <li><a class="nav__link" href="/blog">Dicas de Viagem</a></li>
+          <li><a class="nav__link" href="/sobre">Sobre</a></li>
+          <li><a class="nav__link" href="/contato">Contato</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <div class="hero__content container">
+      <span class="hero__tagline" data-reveal>Pacotes de viagem sob medida</span>
+      <h1 class="hero__title" data-reveal>
+        Viagens que conectam<br />destinos e histórias
+      </h1>
+      <p class="hero__subtitle" data-reveal>
+        Pacotes selecionados, parcelamento facilitado e atendimento personalizado do início ao fim da sua próxima viagem.
+      </p>
+
+      <form class="search-bar hero__search" data-reveal aria-label="Buscar pacotes">
+        <div class="field">
+          <label for="hero-destino">Destino</label>
+          <select id="hero-destino" name="destino">
+            <option value="">Para onde?</option>
+            <option value="maldivas">Maldivas</option>
+            <option value="bali">Bali</option>
+            <option value="patagonia">Patagônia</option>
+            <option value="lisboa">Lisboa</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="hero-mes">Mês</label>
+          <input id="hero-mes" name="mes" type="month" />
+        </div>
+        <div class="field">
+          <label for="hero-preco">Faixa de preço</label>
+          <select id="hero-preco" name="preco">
+            <option value="">Qualquer valor</option>
+            <option value="0-2000">Até R$ 2.000</option>
+            <option value="2000-5000">R$ 2.000 – R$ 5.000</option>
+            <option value="5000+">Acima de R$ 5.000</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="hero-promo">Promoções</label>
+          <select id="hero-promo" name="promocao">
+            <option value="">Todos os pacotes</option>
+            <option value="promo">Somente promoções</option>
+          </select>
+        </div>
+        <button class="btn btn--primary" type="submit">Buscar Pacotes</button>
+      </form>
+    </div>
+
+    <div class="hero__scroll-cue" data-reveal aria-hidden="true">
+      <span class="hero__scroll-label">Explore mais</span>
+      <span class="hero__mouse">
+        <span class="hero__mouse-wheel"></span>
+      </span>
+    </div>
+  </section>
+
+  <!-- Próximas seções da Home (Pacotes em Destaque, Destinos Populares, Promoções,
+       Diferenciais, Depoimentos, Blog, CTA, Footer) entram aqui nos próximos passos. -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -8,8 +8,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/14.0.5/swiper-bundle.min.css" />
   <link rel="stylesheet" href="css/tokens.css" />
   <link rel="stylesheet" href="css/style-guide.css" />
+  <link rel="stylesheet" href="css/carousel.css" />
 </head>
 <body>
 
@@ -656,6 +658,249 @@
     </div>
   </section>
 
+  <!-- ===================== CARROSSEL (SWIPER) ===================== -->
+  <!-- Seção separada — usa css/carousel.css isolado e reaproveita os cards
+       da seção "Cards" acima apenas como conteúdo, sem alterar nada lá. -->
+  <section class="section" id="carrossel">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__eyebrow">Componentes</span>
+        <h2 class="section__title">Carrossel</h2>
+        <p class="section__desc">SwiperJS — usado em pacotes em destaque, galeria e depoimentos. Setas, paginação e swipe no touch.</p>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__title">Pacotes em destaque</h3>
+        <div class="carousel swiper" id="swiper-pacotes">
+          <div class="carousel__track">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <article class="card card--pacote">
+                  <div class="card__media">
+                    <img src="https://placehold.co/480x360/f5f6f8/5c6472?text=Maldivas" alt="Maldivas" />
+                    <span class="card__badge">-15% Promoção</span>
+                    <span class="card__vagas">8 vagas</span>
+                  </div>
+                  <div class="card__body">
+                    <div class="card__local">📍 Maldivas · 7 dias</div>
+                    <h4 class="card__title">Ilhas Maldivas All Inclusive</h4>
+                    <div class="card__meta">
+                      <div>
+                        <div class="card__price-label">a partir de</div>
+                        <div class="card__price">R$ 4.899</div>
+                        <div class="card__installment">10x de R$ 489,90</div>
+                      </div>
+                      <button class="btn btn--secondary btn--sm">Ver detalhes</button>
+                    </div>
+                  </div>
+                </article>
+              </div>
+              <div class="swiper-slide">
+                <article class="card card--pacote">
+                  <div class="card__media">
+                    <img src="https://placehold.co/480x360/f5f6f8/5c6472?text=Bali" alt="Bali" />
+                    <span class="card__vagas">Últimas vagas</span>
+                  </div>
+                  <div class="card__body">
+                    <div class="card__local">📍 Bali, Indonésia · 9 dias</div>
+                    <h4 class="card__title">Bali Essencial</h4>
+                    <div class="card__meta">
+                      <div>
+                        <div class="card__price-label">a partir de</div>
+                        <div class="card__price">R$ 6.290</div>
+                        <div class="card__installment">10x de R$ 629,00</div>
+                      </div>
+                      <button class="btn btn--secondary btn--sm">Ver detalhes</button>
+                    </div>
+                  </div>
+                </article>
+              </div>
+              <div class="swiper-slide">
+                <article class="card card--pacote">
+                  <div class="card__media">
+                    <img src="https://placehold.co/480x360/f5f6f8/5c6472?text=Patagonia" alt="Patagônia" />
+                  </div>
+                  <div class="card__body">
+                    <div class="card__local">📍 Patagônia, Argentina · 6 dias</div>
+                    <h4 class="card__title">Aventura na Patagônia</h4>
+                    <div class="card__meta">
+                      <div>
+                        <div class="card__price-label">a partir de</div>
+                        <div class="card__price">R$ 8.150</div>
+                        <div class="card__installment">10x de R$ 815,00</div>
+                      </div>
+                      <button class="btn btn--secondary btn--sm">Ver detalhes</button>
+                    </div>
+                  </div>
+                </article>
+              </div>
+              <div class="swiper-slide">
+                <article class="card card--pacote">
+                  <div class="card__media">
+                    <img src="https://placehold.co/480x360/f5f6f8/5c6472?text=Lisboa" alt="Lisboa" />
+                    <span class="card__badge">-10% Promoção</span>
+                  </div>
+                  <div class="card__body">
+                    <div class="card__local">📍 Lisboa, Portugal · 8 dias</div>
+                    <h4 class="card__title">Lisboa &amp; Sintra</h4>
+                    <div class="card__meta">
+                      <div>
+                        <div class="card__price-label">a partir de</div>
+                        <div class="card__price">R$ 5.490</div>
+                        <div class="card__installment">10x de R$ 549,00</div>
+                      </div>
+                      <button class="btn btn--secondary btn--sm">Ver detalhes</button>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+          <button class="swiper-button-prev" aria-label="Pacote anterior"></button>
+          <button class="swiper-button-next" aria-label="Próximo pacote"></button>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3 class="subsection__title">Depoimentos (sobre fundo escuro)</h3>
+        <div class="carousel-frame--dark">
+        <div class="carousel carousel--dark swiper" id="swiper-depoimentos">
+          <div class="carousel__track">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <article class="card card--depoimento" style="background: transparent; border: 1px solid rgba(255,255,255,0.12);">
+                  <div class="stars">★★★★★</div>
+                  <p class="ts-body" style="color: var(--color-white);">"Atendimento impecável, a viagem foi exatamente como planejado."</p>
+                  <div class="depoimento__autor">
+                    <div class="depoimento__avatar"><img src="https://placehold.co/80x80/f5f6f8/5c6472?text=MC" alt="" /></div>
+                    <div>
+                      <div class="depoimento__nome" style="color: var(--color-white);">Maria Clara</div>
+                      <div class="depoimento__cidade" style="color: rgba(255,255,255,0.6);">São Paulo, SP</div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+              <div class="swiper-slide">
+                <article class="card card--depoimento" style="background: transparent; border: 1px solid rgba(255,255,255,0.12);">
+                  <div class="stars">★★★★★</div>
+                  <p class="ts-body" style="color: var(--color-white);">"Parcelamento facilitado e suporte rápido pelo WhatsApp. Recomendo."</p>
+                  <div class="depoimento__autor">
+                    <div class="depoimento__avatar"><img src="https://placehold.co/80x80/f5f6f8/5c6472?text=JP" alt="" /></div>
+                    <div>
+                      <div class="depoimento__nome" style="color: var(--color-white);">João Pedro</div>
+                      <div class="depoimento__cidade" style="color: rgba(255,255,255,0.6);">Belo Horizonte, MG</div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+              <div class="swiper-slide">
+                <article class="card card--depoimento" style="background: transparent; border: 1px solid rgba(255,255,255,0.12);">
+                  <div class="stars">★★★★★</div>
+                  <p class="ts-body" style="color: var(--color-white);">"Já são três viagens com a Átila Tour, sempre com experiência excelente."</p>
+                  <div class="depoimento__autor">
+                    <div class="depoimento__avatar"><img src="https://placehold.co/80x80/f5f6f8/5c6472?text=AF" alt="" /></div>
+                    <div>
+                      <div class="depoimento__nome" style="color: var(--color-white);">Ana Ferreira</div>
+                      <div class="depoimento__cidade" style="color: rgba(255,255,255,0.6);">Curitiba, PR</div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+          <button class="swiper-button-prev" aria-label="Depoimento anterior"></button>
+          <button class="swiper-button-next" aria-label="Próximo depoimento"></button>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <section class="section" id="footer">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__eyebrow">Componentes</span>
+        <h2 class="section__title">Footer</h2>
+        <p class="section__desc">Contato, endereço, redes sociais, horário e links úteis — conforme a estrutura do PRD.</p>
+      </div>
+
+      <footer class="site-footer">
+        <div class="site-footer__grid">
+          <div class="site-footer__brand">
+            <img src="assets/logo-fundo-escuro.png" alt="Átila Tour" />
+            <p class="site-footer__tagline">Viagens que conectam destinos e histórias. Atendimento personalizado do início ao fim da sua próxima experiência.</p>
+            <div class="site-footer__social">
+              <a class="site-footer__social-link" href="#" aria-label="Instagram">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+              </a>
+              <a class="site-footer__social-link" href="#" aria-label="Facebook">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h-2a5 5 0 0 0-5 5v2H6v4h2v7h4v-7h3l1-4h-4V8a1 1 0 0 1 1-1h3z"/></svg>
+              </a>
+              <a class="site-footer__social-link" href="#" aria-label="WhatsApp">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="site-footer__col">
+            <h3 class="site-footer__heading">Contato</h3>
+            <ul class="site-footer__list">
+              <li class="site-footer__contact-item">
+                <svg class="site-footer__contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <a class="site-footer__link" href="tel:+5511999999999">(11) 99999-9999</a>
+              </li>
+              <li class="site-footer__contact-item">
+                <svg class="site-footer__contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6l-10 7L2 6"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
+                <a class="site-footer__link" href="mailto:contato@atilatour.com.br">contato@atilatour.com.br</a>
+              </li>
+              <li class="site-footer__contact-item">
+                <svg class="site-footer__contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" opacity="0"/><path d="M3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 1 1 3.8 7.1z"/></svg>
+                <a class="site-footer__link" href="#">Falar no WhatsApp</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="site-footer__col">
+            <h3 class="site-footer__heading">Endereço &amp; Horário</h3>
+            <ul class="site-footer__list">
+              <li class="site-footer__contact-item">
+                <svg class="site-footer__contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Av. Paulista, 1000 — Sala 12<br />São Paulo, SP</span>
+              </li>
+              <li class="site-footer__contact-item">
+                <svg class="site-footer__contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                <span>Seg. a sex., 9h às 18h<br />Sáb., 9h às 13h</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="site-footer__col">
+            <h3 class="site-footer__heading">Links Úteis</h3>
+            <ul class="site-footer__list">
+              <li><a class="site-footer__link" href="#">Pacotes</a></li>
+              <li><a class="site-footer__link" href="#">Destinos</a></li>
+              <li><a class="site-footer__link" href="#">Promoções</a></li>
+              <li><a class="site-footer__link" href="#">Dicas de Viagem</a></li>
+              <li><a class="site-footer__link" href="#">Sobre</a></li>
+              <li><a class="site-footer__link" href="#">Contato</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="site-footer__bottom">
+          <span>© 2026 Átila Tour. Todos os direitos reservados.</span>
+          <ul class="site-footer__bottom-links">
+            <li><a href="#">Política de Privacidade</a></li>
+            <li><a href="#">Termos de Uso</a></li>
+          </ul>
+        </div>
+      </footer>
+    </div>
+  </section>
+
   <!-- ===================== ELEVAÇÃO ===================== -->
   <section class="section" id="elevacao">
     <div class="container">
@@ -784,6 +1029,42 @@
     <img src="assets/logo-fundo-escuro.png" alt="Átila Tour" style="width:120px; margin-inline:auto; opacity:0.8;" />
   </footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/14.0.5/swiper-bundle.min.js"></script>
+  <script>
+    // Carrossel — Pacotes em destaque
+    new Swiper('#swiper-pacotes', {
+      slidesPerView: 1.15,
+      spaceBetween: 20,
+      observer: true,
+      observeParents: true,
+      pagination: { el: '#swiper-pacotes .swiper-pagination', clickable: true },
+      navigation: { nextEl: '#swiper-pacotes .swiper-button-next', prevEl: '#swiper-pacotes .swiper-button-prev' },
+      keyboard: { enabled: true },
+      a11y: true,
+      breakpoints: {
+        640: { slidesPerView: 2, spaceBetween: 24 },
+        1000: { slidesPerView: 3, spaceBetween: 24 },
+      },
+    });
+
+    // Carrossel — Depoimentos
+    new Swiper('#swiper-depoimentos', {
+      slidesPerView: 1,
+      spaceBetween: 24,
+      // loop desativado: com só 3 depoimentos e 2 por view no desktop,
+      // o modo loop do Swiper não tem slides suficientes pra duplicar
+      // direito e acaba quebrando o cálculo de largura.
+      observer: true,
+      observeParents: true,
+      pagination: { el: '#swiper-depoimentos .swiper-pagination', clickable: true },
+      navigation: { nextEl: '#swiper-depoimentos .swiper-button-next', prevEl: '#swiper-depoimentos .swiper-button-prev' },
+      keyboard: { enabled: true },
+      a11y: true,
+      breakpoints: {
+        800: { slidesPerView: 2, spaceBetween: 24 },
+      },
+    });
+  </script>
   <script>
     // Nav — toggle do menu mobile (hamburger)
     document.querySelectorAll('.nav__toggle').forEach((toggle) => {

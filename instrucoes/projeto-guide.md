@@ -201,6 +201,9 @@ Sanitizar formulários, validação front+back, variáveis de ambiente, headers 
 - `assets/logo-fundo-azul.png` — logo branco + ponto laranja sobre `--color-primary` sólido, usar como avatar/selo/redes sociais
 - `assets/logo-fundo-escuro.png` — logo branco + ponto laranja sobre fundo `--color-navy`, usar em header sobre hero, footer, seções escuras
 
+### Vídeo
+- `assets/hero-video.mp4` — vídeo institucional (1920×1080, H.264, ~10s) para o background do Hero da Home. Usar em `<video>` com `autoplay muted loop playsinline` + overlay escuro (`--color-navy` em baixa opacidade) para garantir contraste do texto por cima, e um `poster` (frame estático) para carregamento mais rápido. Fallback para imagem estática em conexões lentas/mobile, se necessário.
+
 ## Fora do escopo (V1)
 Área do cliente, programa de fidelidade, app, chat interno, marketplace, multiempresa, múltiplos idiomas, sistema de afiliados
 

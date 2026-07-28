@@ -1,0 +1,209 @@
+/* =========================================================
+   ÁTILA TOUR — HOME
+   Estilos específicos da página inicial. Reaproveita os
+   componentes de css/style-guide.css (Nav, botões, campos,
+   barra de busca) sem alterá-los.
+   ========================================================= */
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  min-height: 100vh; /* fallback para navegadores sem svh */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Gradiente em camadas: mais escuro no topo (nav) e na base (busca),
+   mais claro no meio pra deixar o vídeo respirar — nunca um overlay flat. */
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(1, 13, 36, 0.75) 0%,
+      rgba(1, 13, 36, 0.35) 32%,
+      rgba(1, 13, 36, 0.45) 60%,
+      rgba(1, 13, 36, 0.85) 100%
+    );
+}
+
+/* ---------- Header sobre o hero (transparente) ---------- */
+.site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+/* .nav--dark por padrão tem fundo navy sólido (usado no style guide e
+   em seções internas). Aqui, sobre o vídeo, o header fica transparente. */
+.site-header .nav--dark {
+  background: transparent;
+}
+
+.site-header .nav__mobile-panel--dark.is-open {
+  background: var(--color-navy);
+}
+
+/* ---------- Conteúdo do Hero ---------- */
+.hero__content {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-top: calc(var(--space-9) + 64px); /* respiro abaixo do header */
+  padding-bottom: var(--space-9);
+}
+
+.hero__tagline {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--fs-small);
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+  margin-bottom: var(--space-4);
+}
+
+.hero__tagline::before,
+.hero__tagline::after {
+  content: "";
+  width: 28px;
+  height: 2px;
+  background: var(--color-accent);
+  border-radius: var(--radius-full);
+}
+
+.hero__title {
+  color: var(--color-white);
+  font-size: var(--fs-display);
+  font-weight: var(--fw-black);
+  line-height: var(--lh-display);
+  letter-spacing: var(--tracking-display);
+  max-width: 18ch;
+  margin-inline: auto;
+  margin-bottom: var(--space-5);
+  text-shadow: 0 2px 24px rgba(1, 13, 36, 0.35);
+}
+
+.hero__subtitle {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: var(--fs-body-lg);
+  line-height: var(--lh-body);
+  max-width: 52ch;
+  margin-inline: auto;
+  margin-bottom: var(--space-7);
+}
+
+.hero__search {
+  width: 100%;
+  text-align: left; /* os campos/labels continuam alinhados à esquerda dentro da barra */
+}
+
+/* ---------- Indicador de scroll ---------- */
+.hero__scroll-cue {
+  position: absolute;
+  left: 50%;
+  bottom: 112px;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.hero__scroll-label {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.hero__mouse {
+  width: 22px;
+  height: 34px;
+  border: 2px solid rgba(255, 255, 255, 0.55);
+  border-radius: var(--radius-full);
+  display: flex;
+  justify-content: center;
+  padding-top: 6px;
+}
+
+.hero__mouse-wheel {
+  width: 4px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background: var(--color-accent);
+  animation: hero-scroll-wheel 1.6s ease-in-out infinite;
+}
+
+@keyframes hero-scroll-wheel {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  70% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  71% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .hero__content {
+    padding-top: calc(var(--space-8) + 56px);
+  }
+
+  .hero__title {
+    max-width: 100%;
+  }
+}
+
+/* Vídeo pesa em conexões/aparelhos que preferem menos movimento —
+   troca pro poster estático e para a reprodução. */
+@media (prefers-reduced-motion: reduce) {
+  .hero__video {
+    display: none;
+  }
+
+  .hero__media {
+    background: url("../assets/hero-poster.jpg") center / cover no-repeat;
+  }
+
+  .hero__mouse-wheel {
+    animation: none;
+    opacity: 1;
+  }
+}

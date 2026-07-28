@@ -1,0 +1,152 @@
+/* =========================================================
+   ÁTILA TOUR — CARROSSEL (SwiperJS)
+   Arquivo separado, isolado de style-guide.css.
+   Não redefine nem sobrescreve nenhuma classe .card — apenas
+   usa os componentes já existentes dentro dos slides.
+
+   IMPORTANTE: o elemento .carousel é o mesmo passado pro
+   `new Swiper(...)` — o Swiper mede a largura DELE pra calcular
+   o deslocamento dos slides. Por isso ele não pode ter padding
+   horizontal (senão o cálculo de largura fica errado e o
+   carrossel "trava"/não avança direito). As setas ficam
+   posicionadas por cima da borda do track (inset), não num
+   corredor externo.
+   ========================================================= */
+
+.carousel {
+  --swiper-theme-color: var(--color-primary);
+  position: relative;
+  padding-bottom: var(--space-8);
+}
+
+/* Envolve só o swiper-wrapper — é aqui que o "mascaramento" dos slides
+   acontece. Tem a MESMA largura de .carousel (sem padding lateral),
+   então bate exatamente com o que o Swiper calcula internamente. */
+.carousel__track {
+  overflow: hidden;
+  border-radius: var(--radius-md);
+}
+
+.carousel .swiper-slide {
+  height: auto;
+  display: flex;
+}
+
+.carousel .swiper-slide > * {
+  width: 100%;
+}
+
+/* ---------- Paginação ---------- */
+.carousel .swiper-pagination {
+  position: static;
+  margin-top: var(--space-5);
+}
+
+.carousel .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background: var(--color-border);
+  opacity: 1;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.carousel .swiper-pagination-bullet-active {
+  background: var(--color-accent);
+  transform: scale(1.2);
+}
+
+/* ---------- Setas ----------
+   Inset sobre a borda do track (padrão comum, tipo Netflix) — não
+   dependem de nenhum padding externo, então nunca desalinham o
+   cálculo de largura do Swiper. Ícone via SVG de fundo, não usa a
+   fonte de ícones do Swiper (evita renderizar "vazio"). */
+.carousel .swiper-button-prev,
+.carousel .swiper-button-next {
+  top: 50%;
+  width: 44px;
+  height: 44px;
+  margin-top: -22px;
+  z-index: 20;
+  background-color: var(--color-white);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 18px 18px;
+  border-radius: 999px;
+  box-shadow: 0 6px 16px rgba(10, 15, 26, 0.18), 0 2px 6px rgba(1, 52, 142, 0.14);
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.carousel .swiper-button-prev::after,
+.carousel .swiper-button-next::after {
+  content: none !important;
+}
+
+.carousel .swiper-button-prev {
+  left: 12px;
+  right: auto;
+  inset-inline-start: 12px;
+  inset-inline-end: auto;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%2301348E' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='15 18 9 12 15 6'%3E%3C/polyline%3E%3C/svg%3E");
+}
+
+.carousel .swiper-button-next {
+  right: 12px;
+  left: auto;
+  inset-inline-end: 12px;
+  inset-inline-start: auto;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%2301348E' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='9 18 15 12 9 6'%3E%3C/polyline%3E%3C/svg%3E");
+}
+
+.carousel .swiper-button-prev:hover,
+.carousel .swiper-button-next:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(10, 15, 26, 0.22), 0 4px 8px rgba(1, 52, 142, 0.18);
+}
+
+.carousel .swiper-button-prev:focus-visible,
+.carousel .swiper-button-next:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.carousel .swiper-button-disabled {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+/* ---------- Variante escura (depoimentos) ----------
+   O fundo navy/padding/raio ficam num wrapper EXTERNO
+   (.carousel-frame--dark), nunca no elemento .carousel em si —
+   ele é o mesmo que o Swiper mede, então não pode ganhar padding
+   horizontal (mesmo problema explicado no topo do arquivo). */
+.carousel-frame--dark {
+  background: var(--color-navy);
+  padding: var(--space-6) var(--space-5) var(--space-7);
+  border-radius: var(--radius-lg);
+}
+
+.carousel--dark {
+  --swiper-theme-color: var(--color-accent);
+}
+
+.carousel--dark .carousel__track {
+  border-radius: var(--radius-sm);
+}
+
+.carousel--dark .swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.carousel--dark .swiper-pagination-bullet-active {
+  background: var(--color-accent);
+}
+
+@media (max-width: 640px) {
+  .carousel .swiper-button-prev,
+  .carousel .swiper-button-next {
+    width: 36px;
+    height: 36px;
+    margin-top: -18px;
+    background-size: 14px 14px;
+  }
+}
