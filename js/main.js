@@ -74,17 +74,46 @@ function initPacotesCarousel() {
 }
 
 /**
- * Nav — abre/fecha o menu mobile (hamburger -> X).
+ * Nav — abre/fecha o drawer mobile full-screen.
+ * Cobrindo 100vw/100dvh por cima da navbar, o drawer já "some" com o
+ * botão do WhatsApp da barra por trás — não precisa escondê-lo à parte.
  */
 function initNavToggle() {
   document.querySelectorAll('.nav__toggle').forEach((toggle) => {
-    const panel = document.getElementById(toggle.getAttribute('aria-controls'));
-    if (!panel) return;
+    const drawer = document.getElementById(toggle.getAttribute('aria-controls'));
+    if (!drawer) return;
+
+    const overlay = drawer.parentElement.querySelector('[data-nav-overlay]');
+    const closeBtn = drawer.querySelector('[data-nav-close]');
+
+    const open = () => {
+      toggle.setAttribute('aria-expanded', 'true');
+      drawer.classList.add('is-open');
+      if (overlay) overlay.classList.add('is-open');
+      document.body.classList.add('nav-drawer-open');
+    };
+
+    const close = () => {
+      toggle.setAttribute('aria-expanded', 'false');
+      drawer.classList.remove('is-open');
+      if (overlay) overlay.classList.remove('is-open');
+      document.body.classList.remove('nav-drawer-open');
+    };
 
     toggle.addEventListener('click', () => {
       const isOpen = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', String(!isOpen));
-      panel.classList.toggle('is-open', !isOpen);
+      isOpen ? close() : open();
+    });
+
+    if (closeBtn) closeBtn.addEventListener('click', close);
+    if (overlay) overlay.addEventListener('click', close);
+
+    drawer.querySelectorAll('.nav__drawer-link').forEach((link) => {
+      link.addEventListener('click', close);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') close();
     });
   });
 }
