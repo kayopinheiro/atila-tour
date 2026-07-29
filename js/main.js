@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeroReveal();
   initWhatsAppFloat();
   initPacotesCarousel();
+  initDepoimentosCarousel();
   initStickyHeader();
   initImageFallback();
   initScrollReveal();
@@ -130,6 +131,41 @@ function initPacotesCarousel() {
     breakpoints: {
       640: { slidesPerView: 2, spaceBetween: 24 },
       1000: { slidesPerView: 3, spaceBetween: 24 },
+    },
+  });
+}
+
+/**
+ * Carrossel de Depoimentos (SwiperJS) — mesmo padrão do carrossel de
+ * Pacotes em Destaque, só que com 1-2 slides visíveis (cards de
+ * depoimento são mais estreitos em conteúdo, mas o bloco escuro que os
+ * envolve já limita a largura útil).
+ */
+function initDepoimentosCarousel() {
+  const el = document.getElementById('swiper-depoimentos');
+  if (!el || typeof Swiper === 'undefined') return;
+
+  const nav = el.closest('.carousel-nav');
+
+  new Swiper(el, {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    observer: true,
+    observeParents: true,
+    pagination: { el: el.querySelector('.swiper-pagination'), clickable: true },
+    navigation: {
+      nextEl: nav ? nav.querySelector('.swiper-button-next') : null,
+      prevEl: nav ? nav.querySelector('.swiper-button-prev') : null,
+    },
+    keyboard: { enabled: true },
+    a11y: true,
+    autoplay: {
+      delay: 5500,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    },
+    breakpoints: {
+      780: { slidesPerView: 2, spaceBetween: 24 },
     },
   });
 }
