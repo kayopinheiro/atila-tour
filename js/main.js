@@ -8,7 +8,49 @@ document.addEventListener('DOMContentLoaded', () => {
   initWhatsAppFloat();
   initPacotesCarousel();
   initStickyHeader();
+  initImageFallback();
+  initScrollReveal();
 });
+
+/**
+ * Fallback global de imagem — evita o ícone de imagem quebrada quando um
+ * asset ainda não existe (fotos de destino/blog/pacote a serem adicionadas
+ * depois, ex: vindas do Sanity sem campo de imagem preenchido) ou quando
+ * o asset existe mas falha ao carregar. Troca o src pelo placeholder no
+ * tamanho real do elemento, usando as cores do design system e o alt
+ * como texto.
+ */
+function initImageFallback() {
+  // Caso 1: <img> já nasce sem src (ex: campo de imagem vazio vindo do CMS).
+  // Sem src não há requisição de rede, então o evento 'error' nunca dispara
+  // — precisa ser tratado à parte, na varredura inicial.
+  document.querySelectorAll('img').forEach((img) => {
+    if (!img.getAttribute('src')) applyImagePlaceholder(img);
+  });
+
+  // Caso 2: <img> tem src mas o carregamento falha (asset apagado, path
+  // errado, etc). Escutado em capture porque 'error' de <img> não faz bubble.
+  document.addEventListener(
+    'error',
+    (e) => {
+      const img = e.target;
+      if (!(img instanceof HTMLImageElement) || img.dataset.fallbackApplied) return;
+      applyImagePlaceholder(img);
+    },
+    true
+  );
+}
+
+/**
+ * Aponta pro ícone genérico local (assets/placeholder.svg) em vez de pedir
+ * pra um serviço externo (placehold.co) — se a imagem original falhou por
+ * causa da rede (offline, firewall, ad-blocker), um fallback que também
+ * depende de rede externa falha do mesmo jeito. Asset local nunca falha.
+ */
+function applyImagePlaceholder(img) {
+  img.dataset.fallbackApplied = 'true';
+  img.src = 'assets/placeholder.svg';
+}
 
 /**
  * Header — fica fixo e ganha fundo sólido assim que a página rola.
@@ -90,6 +132,51 @@ function initPacotesCarousel() {
       1000: { slidesPerView: 3, spaceBetween: 24 },
     },
   });
+}
+
+/**
+ * Scroll reveal (GSAP) para seções fora do Hero — usa IntersectionObserver
+ * porque o plugin ScrollTrigger do GSAP não está carregado no projeto.
+ * Suporta as variantes documentadas no guia: data-reveal (fade + translateY),
+ * "left", "right", "scale". O Hero é revelado à parte (initHeroReveal),
+ * de forma imediata, por já estar acima da dobra no load.
+ */
+function initScrollReveal() {
+  const targets = [...document.querySelectorAll('[data-reveal]')].filter((el) => !el.closest('.hero'));
+  if (!targets.length) return;
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (prefersReducedMotion || typeof gsap === 'undefined') {
+    targets.forEach((el) => {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    });
+    return;
+  }
+
+  const FROM_BY_DIRECTION = {
+    left: { x: -32 },
+    right: { x: 32 },
+    scale: { scale: 0.92 },
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const from = FROM_BY_DIRECTION[el.dataset.reveal] || { y: 24 };
+
+      gsap.fromTo(
+        el,
+        { opacity: 0, ...from },
+        { opacity: 1, x: 0, y: 0, scale: 1, duration: 0.8, ease: 'power3.out' }
+      );
+      observer.unobserve(el);
+    });
+  }, { threshold: 0.2 });
+
+  targets.forEach((el) => observer.observe(el));
 }
 
 /**

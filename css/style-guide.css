@@ -81,6 +81,8 @@ ul { list-style: none; }
 
 .section--dark .section__desc { color: rgba(255,255,255,0.7); }
 
+.section__cta { margin-top: var(--space-7); text-align: center; }
+
 .subsection { margin-top: var(--space-8); }
 .subsection:first-child { margin-top: 0; }
 
@@ -332,6 +334,8 @@ ul { list-style: none; }
   color: var(--color-white);
 }
 .card--destino .card__title { color: var(--color-white); margin-bottom: 0; }
+.card--destino:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+.card--destino:active { transform: scale(0.98); }
 
 .card--diferencial {
   padding: var(--space-5);
