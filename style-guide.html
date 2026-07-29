@@ -7,11 +7,12 @@
   <meta name="robots" content="noindex, nofollow" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:ital,wght@0,400;0,500;0,700;0,800;1,800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/14.0.5/swiper-bundle.min.css" />
   <link rel="stylesheet" href="css/tokens.css" />
   <link rel="stylesheet" href="css/style-guide.css" />
   <link rel="stylesheet" href="css/carousel.css" />
+  <link rel="stylesheet" href="css/testimonials.css" />
 </head>
 <body>
 
@@ -691,44 +692,6 @@
         </div>
       </div>
 
-      <div class="subsection">
-        <h3 class="subsection__title">Depoimento</h3>
-        <div class="grid grid-3">
-          <article class="card card--depoimento">
-            <div class="stars">★★★★★</div>
-            <p class="ts-body">"Atendimento impecável, a viagem foi exatamente como planejado."</p>
-            <div class="depoimento__autor">
-              <div class="depoimento__avatar"><img src="assets/placeholder.svg" alt="" /></div>
-              <div>
-                <div class="depoimento__nome">Maria Clara</div>
-                <div class="depoimento__cidade">São Paulo, SP</div>
-              </div>
-            </div>
-          </article>
-          <article class="card card--depoimento">
-            <div class="stars">★★★★★</div>
-            <p class="ts-body">"Parcelamento facilitado e suporte rápido pelo WhatsApp. Recomendo."</p>
-            <div class="depoimento__autor">
-              <div class="depoimento__avatar"><img src="assets/placeholder.svg" alt="" /></div>
-              <div>
-                <div class="depoimento__nome">João Pedro</div>
-                <div class="depoimento__cidade">Belo Horizonte, MG</div>
-              </div>
-            </div>
-          </article>
-          <article class="card card--depoimento">
-            <div class="stars">★★★★★</div>
-            <p class="ts-body">"Já são três viagens com a Átila Tour, sempre com experiência excelente."</p>
-            <div class="depoimento__autor">
-              <div class="depoimento__avatar"><img src="assets/placeholder.svg" alt="" /></div>
-              <div>
-                <div class="depoimento__nome">Ana Ferreira</div>
-                <div class="depoimento__cidade">Curitiba, PR</div>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -840,62 +803,174 @@
         </div>
       </div>
 
-      <div class="subsection">
-        <h3 class="subsection__title">Depoimentos (sobre fundo escuro)</h3>
-        <div class="carousel-frame--dark">
-          <div class="carousel-nav">
-            <div class="carousel carousel--dark swiper" id="swiper-depoimentos">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <article class="card card--depoimento" style="background: transparent; border: 1px solid rgba(255,255,255,0.12);">
-                  <div class="stars">★★★★★</div>
-                  <p class="ts-body" style="color: var(--color-white);">"Atendimento impecável, a viagem foi exatamente como planejado."</p>
-                  <div class="depoimento__autor">
-                    <div class="depoimento__avatar"><img src="assets/placeholder.svg" alt="" /></div>
+    </div>
+  </section>
+
+  <!-- ===================== TESTIMONIALS SLIDER (componente) ===================== -->
+  <section class="section testimonials" id="testimonials-component">
+    <div class="testimonials__decor" aria-hidden="true">
+      <div class="testimonials__blob testimonials__blob--1"></div>
+      <div class="testimonials__blob testimonials__blob--2"></div>
+    </div>
+    <div class="container">
+      <div class="section__header">
+        <span class="section__eyebrow">Componentes</span>
+        <h2 class="section__title">Testimonials Slider</h2>
+        <p class="section__desc">
+          Carrossel de depoimentos reutilizável (Home e qualquer outra página). Variantes por breakpoint:
+          <strong>mobile</strong> 1 card, <strong>tablet</strong> 1,5 card, <strong>desktop</strong> 2 cards
+          (ver <code>initDepoimentosCarousel</code> em <code>js/main.js</code>). Estados do card: <strong>default</strong>
+          (repouso) e <strong>hover</strong> — passe o mouse sobre um card para ver a elevação, a sombra mais forte e o
+          zoom sutil na foto do destino. Não é elemento clicável, por isso não tem estado <em>active</em> próprio.
+        </p>
+      </div>
+
+      <div class="carousel-nav testimonials__slider">
+        <div class="carousel testimonials-slider swiper" id="swiper-depoimentos-sg">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <article class="testimonial-card">
+                <svg class="testimonial-card__quote-icon" viewBox="0 0 48 36" width="44" height="33" fill="currentColor" aria-hidden="true">
+                  <path d="M0 36V22.2C0 9.4 7.6 1.4 19.5 0l1.6 5.6C13.9 7.3 10 12.4 10 18.4h9.5V36H0Zm27 0V22.2c0-12.8 7.6-20.8 19.5-22.2l1.5 5.6C40.9 7.3 37 12.4 37 18.4h9.5V36H27Z" />
+                </svg>
+                <div class="testimonial-card__stars">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6L12 3z" /></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6L12 3z" /></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6L12 3z" /></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6L12 3z" /></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6L12 3z" /></svg>
+                </div>
+                <p class="testimonial-card__text">"Atendimento impecável, a viagem foi exatamente como planejado."</p>
+                <div class="testimonial-card__footer">
+                  <div class="testimonial-card__person">
+                    <div class="testimonial-card__avatar">
+                      <svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <defs><linearGradient id="sgAvatarMC" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#002D87" /><stop offset="1" stop-color="#0149BC" /></linearGradient></defs>
+                        <rect width="56" height="56" rx="28" fill="url(#sgAvatarMC)" />
+                        <text x="50%" y="53%" text-anchor="middle" dominant-baseline="middle" fill="#fff" font-family="Manrope, sans-serif" font-weight="800" font-size="20">MC</text>
+                      </svg>
+                    </div>
                     <div>
-                      <div class="depoimento__nome" style="color: var(--color-white);">Maria Clara</div>
-                      <div class="depoimento__cidade" style="color: rgba(255,255,255,0.6);">São Paulo, SP</div>
+                      <div class="testimonial-card__name">Maria Clara</div>
+                      <div class="testimonial-card__meta">São Paulo, SP</div>
+                      <div class="testimonial-card__destino">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z" /><circle cx="12" cy="9" r="2.4" /></svg>
+                        Lisboa
+                      </div>
                     </div>
                   </div>
-                </article>
-              </div>
-              <div class="swiper-slide">
-                <article class="card card--depoimento" style="background: transparent; border: 1px solid rgba(255,255,255,0.12);">
-                  <div class="stars">★★★★★</div>
-                  <p class="ts-body" style="color: var(--color-white);">"Parcelamento facilitado e suporte rápido pelo WhatsApp. Recomendo."</p>
-                  <div class="depoimento__autor">
-                    <div class="depoimento__avatar"><img src="assets/placeholder.svg" alt="" /></div>
-                    <div>
-                      <div class="depoimento__nome" style="color: var(--color-white);">João Pedro</div>
-                      <div class="depoimento__cidade" style="color: rgba(255,255,255,0.6);">Belo Horizonte, MG</div>
-                    </div>
+                  <div class="testimonial-card__photo">
+                    <svg viewBox="0 0 120 96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <defs><linearGradient id="sgDestLisboa" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0149BC" /><stop offset="1" stop-color="#002D87" /></linearGradient></defs>
+                      <rect width="120" height="96" fill="url(#sgDestLisboa)" />
+                      <circle cx="94" cy="22" r="10" fill="#FD9E0A" opacity="0.85" />
+                      <path d="M0 70 Q30 50 60 68 T120 62V96H0Z" fill="rgba(255,255,255,0.14)" />
+                      <path d="M20 96V60l10-10 10 10v36" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="2" />
+                      <path d="M56 96V50l8-8 8 8v46" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2" />
+                    </svg>
                   </div>
-                </article>
-              </div>
-              <div class="swiper-slide">
-                <article class="card card--depoimento" style="background: transparent; border: 1px solid rgba(255,255,255,0.12);">
-                  <div class="stars">★★★★★</div>
-                  <p class="ts-body" style="color: var(--color-white);">"Já são três viagens com a Átila Tour, sempre com experiência excelente."</p>
-                  <div class="depoimento__autor">
-                    <div class="depoimento__avatar"><img src="assets/placeholder.svg" alt="" /></div>
-                    <div>
-                      <div class="depoimento__nome" style="color: var(--color-white);">Ana Ferreira</div>
-                      <div class="depoimento__cidade" style="color: rgba(255,255,255,0.6);">Curitiba, PR</div>
-                    </div>
-                  </div>
-                </article>
-              </div>
+                </div>
+              </article>
             </div>
-            <div class="swiper-pagination"></div>
+
+            <div class="swiper-slide">
+              <article class="testimonial-card">
+                <svg class="testimonial-card__quote-icon" viewBox="0 0 48 36" width="44" height="33" fill="currentColor" aria-hidden="true">
+                  <path d="M0 36V22.2C0 9.4 7.6 1.4 19.5 0l1.6 5.6C13.9 7.3 10 12.4 10 18.4h9.5V36H0Zm27 0V22.2c0-12.8 7.6-20.8 19.5-22.2l1.5 5.6C40.9 7.3 37 12.4 37 18.4h9.5V36H27Z" />
+                </svg>
+                <div class="testimonial-card__stars">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6L12 3z" /></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6L12 3z" /></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6L12 3z" /></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6L12 3z" /></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6L12 3z" /></svg>
+                </div>
+                <p class="testimonial-card__text">"Parcelamento facilitado e suporte rápido pelo WhatsApp. Recomendo."</p>
+                <div class="testimonial-card__footer">
+                  <div class="testimonial-card__person">
+                    <div class="testimonial-card__avatar">
+                      <svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <defs><linearGradient id="sgAvatarJP" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#002D87" /><stop offset="1" stop-color="#0149BC" /></linearGradient></defs>
+                        <rect width="56" height="56" rx="28" fill="url(#sgAvatarJP)" />
+                        <text x="50%" y="53%" text-anchor="middle" dominant-baseline="middle" fill="#fff" font-family="Manrope, sans-serif" font-weight="800" font-size="20">JP</text>
+                      </svg>
+                    </div>
+                    <div>
+                      <div class="testimonial-card__name">João Pedro</div>
+                      <div class="testimonial-card__meta">Belo Horizonte, MG</div>
+                      <div class="testimonial-card__destino">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z" /><circle cx="12" cy="9" r="2.4" /></svg>
+                        Maldivas
+                      </div>
+                    </div>
+                  </div>
+                  <div class="testimonial-card__photo">
+                    <svg viewBox="0 0 120 96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <defs><linearGradient id="sgDestMaldivas" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0149BC" /><stop offset="1" stop-color="#01348E" /></linearGradient></defs>
+                      <rect width="120" height="96" fill="url(#sgDestMaldivas)" />
+                      <circle cx="90" cy="24" r="11" fill="#FD9E0A" opacity="0.9" />
+                      <path d="M30 60h14v-14l-7-7-7 7z" fill="rgba(255,255,255,0.75)" />
+                      <rect x="34" y="60" width="6" height="18" fill="rgba(255,255,255,0.55)" />
+                      <path d="M0 78Q20 68 40 78T80 78T120 74V96H0Z" fill="rgba(255,255,255,0.16)" />
+                      <path d="M0 88Q20 80 40 88T80 88T120 84V96H0Z" fill="rgba(255,255,255,0.24)" />
+                    </svg>
+                  </div>
+                </div>
+              </article>
             </div>
-            <button class="swiper-button-prev" aria-label="Depoimento anterior">
-              <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" fill="currentColor" aria-hidden="true"><path d="M560-267.69 347.69-480 560-692.31 588.31-664l-184 184 184 184L560-267.69Z"/></svg>
-            </button>
-            <button class="swiper-button-next" aria-label="Próximo depoimento">
-              <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" fill="currentColor" aria-hidden="true"><path d="m531.69-480-184-184L376-692.31 588.31-480 376-267.69 347.69-296l184-184Z"/></svg>
-            </button>
+
+            <div class="swiper-slide">
+              <article class="testimonial-card">
+                <svg class="testimonial-card__quote-icon" viewBox="0 0 48 36" width="44" height="33" fill="currentColor" aria-hidden="true">
+                  <path d="M0 36V22.2C0 9.4 7.6 1.4 19.5 0l1.6 5.6C13.9 7.3 10 12.4 10 18.4h9.5V36H0Zm27 0V22.2c0-12.8 7.6-20.8 19.5-22.2l1.5 5.6C40.9 7.3 37 12.4 37 18.4h9.5V36H27Z" />
+                </svg>
+                <div class="testimonial-card__stars">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6L12 3z" /></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6L12 3z" /></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6L12 3z" /></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6L12 3z" /></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6L12 3z" /></svg>
+                </div>
+                <p class="testimonial-card__text">"Já são três viagens com a Átila Tour, sempre com experiência excelente."</p>
+                <div class="testimonial-card__footer">
+                  <div class="testimonial-card__person">
+                    <div class="testimonial-card__avatar">
+                      <svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <defs><linearGradient id="sgAvatarAF" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#002D87" /><stop offset="1" stop-color="#0149BC" /></linearGradient></defs>
+                        <rect width="56" height="56" rx="28" fill="url(#sgAvatarAF)" />
+                        <text x="50%" y="53%" text-anchor="middle" dominant-baseline="middle" fill="#fff" font-family="Manrope, sans-serif" font-weight="800" font-size="20">AF</text>
+                      </svg>
+                    </div>
+                    <div>
+                      <div class="testimonial-card__name">Ana Ferreira</div>
+                      <div class="testimonial-card__meta">Curitiba, PR</div>
+                      <div class="testimonial-card__destino">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z" /><circle cx="12" cy="9" r="2.4" /></svg>
+                        Paris
+                      </div>
+                    </div>
+                  </div>
+                  <div class="testimonial-card__photo">
+                    <svg viewBox="0 0 120 96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <defs><linearGradient id="sgDestParis" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#002D87" /><stop offset="1" stop-color="#010D24" /></linearGradient></defs>
+                      <rect width="120" height="96" fill="url(#sgDestParis)" />
+                      <circle cx="30" cy="20" r="9" fill="#FD9E0A" opacity="0.85" />
+                      <path d="M60 18l6 24h-4l4 16h-6l4 14H56l4-14h-6l4-16h-4z" fill="rgba(255,255,255,0.7)" />
+                      <path d="M0 90h120v6H0z" fill="rgba(255,255,255,0.2)" />
+                    </svg>
+                  </div>
+                </div>
+              </article>
+            </div>
           </div>
+          <div class="swiper-pagination"></div>
         </div>
+        <button class="swiper-button-prev" aria-label="Depoimento anterior">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" fill="currentColor" aria-hidden="true"><path d="M560-267.69 347.69-480 560-692.31 588.31-664l-184 184 184 184L560-267.69Z" /></svg>
+        </button>
+        <button class="swiper-button-next" aria-label="Próximo depoimento">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" fill="currentColor" aria-hidden="true"><path d="m531.69-480-184-184L376-692.31 588.31-480 376-267.69 347.69-296l184-184Z" /></svg>
+        </button>
       </div>
     </div>
   </section>
@@ -1145,13 +1220,13 @@
       });
     })();
 
-    // Carrossel — Depoimentos
+    // Carrossel — Testimonials Slider (mesma config de initDepoimentosCarousel em js/main.js)
     (() => {
-    const el = document.getElementById('swiper-depoimentos');
+    const el = document.getElementById('swiper-depoimentos-sg');
     const nav = el.closest('.carousel-nav');
     new Swiper(el, {
       slidesPerView: 1,
-      spaceBetween: 24,
+      spaceBetween: 20,
       // loop desativado: com só 3 depoimentos e 2 por view no desktop,
       // o modo loop do Swiper não tem slides suficientes pra duplicar
       // direito e acaba quebrando o cálculo de largura.
@@ -1164,8 +1239,14 @@
       },
       keyboard: { enabled: true },
       a11y: true,
+      autoplay: {
+        delay: 5500,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+      },
       breakpoints: {
-        800: { slidesPerView: 2, spaceBetween: 24 },
+        700: { slidesPerView: 1.5, spaceBetween: 24 },
+        1080: { slidesPerView: 2, spaceBetween: 32 },
       },
     });
     })();

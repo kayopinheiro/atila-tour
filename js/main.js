@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initStickyHeader();
   initImageFallback();
   initScrollReveal();
+  initTestimonialsReveal();
+  initStatsCountUp();
 });
 
 /**
@@ -136,10 +138,11 @@ function initPacotesCarousel() {
 }
 
 /**
- * Carrossel de Depoimentos (SwiperJS) — mesmo padrão do carrossel de
- * Pacotes em Destaque, só que com 1-2 slides visíveis (cards de
- * depoimento são mais estreitos em conteúdo, mas o bloco escuro que os
- * envolve já limita a largura útil).
+ * Carrossel de Depoimentos (SwiperJS) — Testimonials Slider. Mobile: 1
+ * card. Tablet: 1,5 card (mostra a borda do próximo, convida a
+ * arrastar). Desktop: 2 cards. Mesma config usada no style guide
+ * (id #swiper-depoimentos-sg), pra manter o componente idêntico nas
+ * duas páginas.
  */
 function initDepoimentosCarousel() {
   const el = document.getElementById('swiper-depoimentos');
@@ -165,9 +168,125 @@ function initDepoimentosCarousel() {
       pauseOnMouseEnter: true,
     },
     breakpoints: {
-      780: { slidesPerView: 2, spaceBetween: 24 },
+      700: { slidesPerView: 1.5, spaceBetween: 24 },
+      1080: { slidesPerView: 2, spaceBetween: 32 },
     },
   });
+}
+
+/**
+ * Reveal sequenciado da seção Depoimentos (GSAP): cabeçalho, depois os
+ * cards do slider em stagger, depois a faixa de estatísticas, e o CTA
+ * final por último. Usa marcador próprio (data-testimonials-reveal),
+ * separado de [data-reveal]/initScrollReveal, porque aqui a entrada é
+ * uma sequência orquestrada por seção, não um fade independente por
+ * elemento.
+ */
+function initTestimonialsReveal() {
+  const section = document.querySelector('.testimonials');
+  if (!section) return;
+
+  const header = section.querySelector('[data-testimonials-reveal="header"]');
+  const slider = section.querySelector('[data-testimonials-reveal="slider"]');
+  const cards = section.querySelectorAll('.testimonial-card');
+  const stats = section.querySelector('[data-testimonials-reveal="stats"]');
+  const cta = section.querySelector('[data-testimonials-reveal="cta"]');
+  const targets = [header, slider, stats, cta].filter(Boolean);
+  if (!targets.length) return;
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (prefersReducedMotion || typeof gsap === 'undefined') {
+    [...targets, ...cards].forEach((el) => {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    });
+    return;
+  }
+
+  gsap.set([header, slider, stats, cta].filter(Boolean), { opacity: 0, y: 28 });
+  gsap.set(cards, { opacity: 0, y: 24, scale: 0.96 });
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const tl = gsap.timeline({ defaults: { ease: 'power3.out', duration: 0.7 } });
+        if (header) tl.to(header, { opacity: 1, y: 0 });
+        if (slider) tl.to(slider, { opacity: 1, y: 0 }, '-=0.4');
+        if (cards.length) tl.to(cards, { opacity: 1, y: 0, scale: 1, stagger: 0.15 }, '-=0.5');
+        if (stats) tl.to(stats, { opacity: 1, y: 0 }, '-=0.2');
+        if (cta) tl.to(cta, { opacity: 1, y: 0 }, '-=0.1');
+        observer.unobserve(section);
+      });
+    },
+    { threshold: 0.12 }
+  );
+
+  observer.observe(section);
+}
+
+/**
+ * Count-up das estatísticas da seção Depoimentos. Dispara quando a
+ * faixa entra na viewport (mesmo IntersectionObserver one-shot dos
+ * outros reveals). Formata em pt-BR (milhar com ponto, decimal com
+ * vírgula) e reaplica o sufixo (data-suffix) a cada frame porque o
+ * tween substitui o textContent inteiro.
+ */
+function initStatsCountUp() {
+  const stats = document.querySelector('.testimonials__stats');
+  if (!stats) return;
+
+  const values = [...stats.querySelectorAll('[data-count-to]')];
+  if (!values.length) return;
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const setFinal = () => {
+    values.forEach((el) => {
+      const target = parseFloat(el.dataset.countTo);
+      const decimals = Number(el.dataset.decimals || 0);
+      const suffix = el.dataset.suffix || '';
+      el.textContent = target.toLocaleString('pt-BR', {
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals,
+      }) + suffix;
+    });
+  };
+
+  if (prefersReducedMotion || typeof gsap === 'undefined') {
+    setFinal();
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        values.forEach((el) => {
+          const target = parseFloat(el.dataset.countTo);
+          const decimals = Number(el.dataset.decimals || 0);
+          const suffix = el.dataset.suffix || '';
+          const proxy = { value: 0 };
+          gsap.to(proxy, {
+            value: target,
+            duration: 1.6,
+            ease: 'power2.out',
+            onUpdate: () => {
+              el.textContent = proxy.value.toLocaleString('pt-BR', {
+                minimumFractionDigits: decimals,
+                maximumFractionDigits: decimals,
+              }) + suffix;
+            },
+          });
+        });
+        observer.unobserve(stats);
+      });
+    },
+    { threshold: 0.3 }
+  );
+
+  observer.observe(stats);
 }
 
 /**

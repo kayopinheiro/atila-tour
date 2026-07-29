@@ -164,27 +164,3 @@
     display: none;
   }
 }
-
-/* ---------- Variante escura (depoimentos) ----------
-   O fundo navy/padding/raio ficam num wrapper EXTERNO
-   (.carousel-frame--dark), nunca no elemento .carousel em si —
-   ele é o mesmo que o Swiper mede, então não pode ganhar padding
-   horizontal (mesmo problema explicado no topo do arquivo). */
-.carousel-frame--dark {
-  background: var(--color-navy);
-  padding: var(--space-6) var(--space-5) var(--space-7);
-  border-radius: var(--radius-lg);
-}
-
-.carousel--dark {
-  --swiper-theme-color: var(--color-accent);
-  border-radius: var(--radius-sm);
-}
-
-.carousel--dark .swiper-pagination-bullet {
-  background: rgba(255, 255, 255, 0.3);
-}
-
-.carousel--dark .swiper-pagination-bullet-active {
-  background: var(--color-accent);
-}

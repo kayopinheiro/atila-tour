@@ -1,0 +1,321 @@
+/* =========================================================
+   ÁTILA TOUR — TESTIMONIALS SLIDER
+   Componente do Design System (Home e reaproveitável em
+   qualquer outra página). Depende de css/carousel.css pra
+   mecânica do Swiper (setas, paginação, wrapper) — aqui só o
+   visual do cartão, do cabeçalho, da faixa de estatísticas e
+   da transição final pro footer.
+
+   VARIANTES (breakpoints, ver js/main.js initDepoimentosCarousel):
+   Mobile (<700px): 1 card. Tablet (700–1079px): 1,5 card
+   (mostra a borda do próximo, convida a arrastar). Desktop
+   (≥1080px): 2 cards.
+
+   ESTADOS do .testimonial-card: default (repouso, sombra sutil) /
+   hover — só em dispositivo com mouse de verdade, ver nota de
+   :hover em style-guide.css — (eleva + sombra forte + zoom leve
+   na foto do destino). Não é elemento clicável, por isso sem
+   estado active/focus próprio.
+   ========================================================= */
+
+/* ---------- Seção + decoração orgânica ---------- */
+.testimonials {
+  position: relative;
+  overflow: hidden;
+  /* .section aplica padding-block + border-bottom nos dois lados, mas o
+     CTA final (bleed full-width, fundo navy) já ocupa esse papel de
+     fechamento — sem isso sobraria uma faixa clara + uma linha cinza
+     entre o CTA escuro e a próxima seção. */
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.testimonials__decor {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.testimonials__blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+}
+
+.testimonials__blob--1 {
+  width: 440px;
+  height: 440px;
+  top: -180px;
+  left: -140px;
+  background: radial-gradient(circle, rgba(1, 73, 188, 0.1), transparent 70%);
+}
+
+.testimonials__blob--2 {
+  width: 380px;
+  height: 380px;
+  bottom: -160px;
+  right: -120px;
+  background: radial-gradient(circle, rgba(253, 158, 10, 0.09), transparent 70%);
+}
+
+.testimonials__doodle {
+  position: absolute;
+  top: 56px;
+  right: 9%;
+  color: var(--color-accent);
+  opacity: 0.45;
+}
+
+.testimonials .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- Cabeçalho ---------- */
+.testimonials__badge {
+  margin-bottom: var(--space-4);
+  font-size: var(--fs-small);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.testimonials__badge svg {
+  width: 12px;
+  height: 12px;
+  color: var(--color-accent);
+}
+
+.testimonials__highlight {
+  font-style: italic;
+  color: var(--color-accent);
+}
+
+/* ---------- Slider ---------- */
+.testimonials__slider {
+  margin-top: var(--space-7);
+}
+
+.testimonial-card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-7) var(--space-6) var(--space-6);
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--duration-base) var(--ease-smooth),
+              box-shadow var(--duration-base) var(--ease-smooth);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .testimonial-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+  }
+}
+
+.testimonial-card__quote-icon {
+  position: absolute;
+  top: var(--space-5);
+  right: var(--space-5);
+  color: var(--color-primary-light);
+  opacity: 0.14;
+}
+
+.testimonial-card__stars {
+  position: relative;
+  display: flex;
+  gap: 4px;
+  color: var(--color-accent);
+  margin-bottom: var(--space-4);
+}
+
+.testimonial-card__stars svg {
+  width: 20px;
+  height: 20px;
+}
+
+.testimonial-card__text {
+  position: relative;
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-body);
+  color: var(--color-text);
+  margin-bottom: var(--space-6);
+}
+
+.testimonial-card__footer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border);
+}
+
+.testimonial-card__person {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.testimonial-card__avatar {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.testimonial-card__avatar svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.testimonial-card__name {
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-small);
+  color: var(--color-text);
+}
+
+.testimonial-card__meta {
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+.testimonial-card__destino {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: var(--space-2);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  color: var(--color-accent-dark);
+}
+
+.testimonial-card__destino svg {
+  width: 12px;
+  height: 12px;
+}
+
+.testimonial-card__photo {
+  flex-shrink: 0;
+  width: 92px;
+  height: 76px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.testimonial-card__photo svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: transform var(--duration-slow) var(--ease-smooth);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .testimonial-card:hover .testimonial-card__photo svg {
+    transform: scale(1.08);
+  }
+}
+
+@media (max-width: 640px) {
+  .testimonial-card {
+    padding: var(--space-6) var(--space-5) var(--space-5);
+  }
+
+  .testimonial-card__footer {
+    flex-wrap: wrap;
+  }
+
+  .testimonial-card__photo {
+    width: 72px;
+    height: 60px;
+  }
+}
+
+/* ---------- Estatísticas ---------- */
+.testimonials__stats {
+  margin-top: var(--space-8);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-5);
+  padding: var(--space-6);
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat__icon {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto var(--space-3);
+  border-radius: var(--radius-md);
+  background: var(--color-white);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.stat__value {
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-black);
+  color: var(--color-primary);
+  letter-spacing: var(--tracking-heading);
+}
+
+.stat__label {
+  margin-top: var(--space-1);
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 900px) {
+  .testimonials__stats {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: var(--space-6);
+  }
+}
+
+@media (max-width: 560px) {
+  .testimonials__stats {
+    grid-template-columns: 1fr;
+    padding: var(--space-5);
+  }
+}
+
+/* ---------- CTA final (transição pro footer) ----------
+   Bleed full-width com margin-inline negativo (calc 50% - 50vw)
+   pra ocupar a tela inteira mesmo dentro do .container centralizado. */
+.testimonials__cta {
+  margin-top: var(--space-8);
+  margin-inline: calc(50% - 50vw);
+  width: 100vw;
+  background: var(--color-navy);
+  padding: var(--space-7) var(--container-padding);
+  text-align: center;
+}
+
+.testimonials__cta-text {
+  color: var(--color-white);
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-bold);
+  margin-bottom: var(--space-5);
+}
+
+.testimonials__cta-btn:hover {
+  box-shadow: var(--shadow-accent);
+}
