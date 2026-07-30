@@ -356,6 +356,46 @@ ul { list-style: none; }
   margin-bottom: var(--space-4);
 }
 
+.card--blog { display: block; }
+.card--blog__media { position: relative; aspect-ratio: 16/9; overflow: hidden; }
+.card--blog__media svg {
+  width: 100%; height: 100%; display: block;
+  transition: transform var(--duration-base) var(--ease-smooth);
+}
+.card--blog__meta {
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: var(--space-2);
+}
+.card--blog .card__title { font-size: var(--fs-h4); }
+.card--blog__excerpt {
+  font-size: var(--fs-body);
+  color: var(--color-text-muted);
+  margin: var(--space-2) 0 var(--space-4);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.card--blog__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fs-small);
+  font-weight: var(--fw-bold);
+  color: var(--color-primary);
+}
+.card--blog__link span { display: inline-block; transition: transform var(--duration-base) var(--ease-smooth); }
+.card--blog:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; }
+.card--blog:active { transform: scale(0.98); }
+
+@media (hover: hover) and (pointer: fine) {
+  .card--blog:hover .card--blog__media svg { transform: scale(1.06); }
+  .card--blog:hover .card--blog__link span { transform: translateX(4px); }
+}
+
 /* Depoimento (card antigo) substituído pelo componente Testimonials
    Slider — ver css/testimonials.css (.testimonial-card). */
 
