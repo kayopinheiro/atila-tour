@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollReveal();
   initTestimonialsReveal();
   initStatsCountUp();
+  initFaqAccordion();
 });
 
 /**
@@ -332,6 +333,32 @@ function initScrollReveal() {
   }, { threshold: 0.2 });
 
   targets.forEach((el) => observer.observe(el));
+}
+
+/**
+ * FAQ — accordion com um item aberto por vez, controlado por
+ * aria-expanded (mesmo componente documentado no style guide).
+ */
+function initFaqAccordion() {
+  const faqList = document.getElementById('faq-list');
+  if (!faqList) return;
+
+  faqList.querySelectorAll('.faq-question').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+
+      faqList.querySelectorAll('.faq-item.is-open').forEach((openItem) => {
+        if (openItem !== item) {
+          openItem.classList.remove('is-open');
+          openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      item.classList.toggle('is-open', !isOpen);
+      btn.setAttribute('aria-expanded', String(!isOpen));
+    });
+  });
 }
 
 /**
